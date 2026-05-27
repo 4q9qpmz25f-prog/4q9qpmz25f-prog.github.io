@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dispensa Famiglia — App iOS</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+      background: #0a0a0f; color: #e0e0e0; min-height: 100vh;
+    }
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 32px; border-bottom: 1px solid #1c1c2e;
+      position: sticky; top: 0;
+      background: rgba(10,10,15,0.92); backdrop-filter: blur(12px); z-index: 100;
+    }
+    .nav-logo { color: #fff; font-size: 17px; font-weight: 700; text-decoration: none; }
+    .nav-links a { color: #888; font-size: 14px; text-decoration: none; }
+    .nav-links a:hover { color: #fff; }
+
+    .hero {
+      background: linear-gradient(160deg, #0d1a2e 0%, #0a0a0f 60%);
+      padding: 80px 32px 64px; text-align: center;
+      border-bottom: 1px solid #1c1c2e;
+    }
+    .app-icon {
+      width: 100px; height: 100px;
+      background: linear-gradient(135deg, #0a84ff, #30d158);
+      border-radius: 24px; margin: 0 auto 24px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 52px;
+      box-shadow: 0 12px 40px rgba(10,132,255,0.3);
+    }
+    .hero h1 { font-size: 38px; font-weight: 800; color: #fff; margin-bottom: 12px; }
+    .hero .sub { color: #888; font-size: 17px; max-width: 480px; margin: 0 auto 36px; line-height: 1.6; }
+    .store-btn {
+      display: inline-block;
+      background: #fff; color: #000;
+      text-decoration: none; padding: 14px 32px;
+      border-radius: 14px; font-size: 16px; font-weight: 700;
+      transition: opacity .2s;
+    }
+    .store-btn:hover { opacity: .85; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 60px 32px 80px; }
+    .features-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px; margin-bottom: 60px;
+    }
+    .feature {
+      background: #111827; border: 1px solid #1f2937;
+      border-radius: 16px; padding: 22px;
+    }
+    .feature-icon { font-size: 28px; margin-bottom: 12px; }
+    .feature h3 { color: #fff; font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .feature p { color: #9ca3af; font-size: 13px; line-height: 1.6; }
+
+    .section-title { color: #fff; font-size: 22px; font-weight: 700; margin-bottom: 20px; }
+    .links-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .link-card {
+      background: #111827; border: 1px solid #1f2937;
+      border-radius: 14px; padding: 16px 20px;
+      text-decoration: none; color: #9ca3af;
+      font-size: 14px; font-weight: 600;
+      transition: border-color .2s, color .2s;
+    }
+    .link-card:hover { border-color: #0a84ff; color: #fff; }
+
+    footer {
+      text-align: center; padding: 32px; color: #374151;
+      font-size: 13px; border-top: 1px solid #1c1c2e;
+    }
+    footer a { color: #555; text-decoration: none; }
+    footer a:hover { color: #888; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="/">← Luca Tiburzi</a>
+    <div class="nav-links">
+      <a href="supporto.html">Supporto</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="app-icon">🏠</div>
+    <h1>Dispensa Famiglia</h1>
+    <p class="sub">La dispensa di casa e la lista della spesa, sempre in ordine e condivisi con tutta la famiglia.</p>
+    <a class="store-btn" href="#">🍎 Disponibile su App Store</a>
+  </div>
+
+  <div class="container">
+
+    <div class="features-grid">
+      <div class="feature">
+        <div class="feature-icon">📷</div>
+        <h3>Scanner barcode</h3>
+        <p>Scansiona i prodotti per aggiungerli o rimuoverli dalla dispensa. Riconosce nome e immagine automaticamente.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">👨‍👩‍👧</div>
+        <h3>Condividi in famiglia</h3>
+        <p>Crea una famiglia e invita i tuoi cari con un codice. Dispensa e lista spesa sempre sincronizzate.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📅</div>
+        <h3>Date di scadenza</h3>
+        <p>Tieni traccia delle scadenze con il sistema a lotti. Scanner OCR per leggere le date dalle etichette.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🛒</div>
+        <h3>Lista della spesa</h3>
+        <p>Si aggiorna automaticamente quando un prodotto finisce. Modalità spesa con carte grandi per il supermercato.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📴</div>
+        <h3>Funziona offline</h3>
+        <p>Scanner e lista spesa funzionano senza connessione. Le modifiche si sincronizzano al ritorno online.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📍</div>
+        <h3>Geofencing</h3>
+        <p>Le modifiche alla dispensa sono consentite solo quando sei a casa. Lista spesa sempre accessibile.</p>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 40px;">
+      <div class="section-title">Link utili</div>
+      <div class="links-row">
+        <a class="link-card" href="supporto.html">✉️ Supporto</a>
+        <a class="link-card" href="privacy.html">🔒 Privacy Policy</a>
+        <a class="link-card" href="termini.html">📄 Termini di servizio</a>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2025 Luca Tiburzi &nbsp;·&nbsp;
+    <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+    <a href="termini.html">Termini di servizio</a>
+  </footer>
+
+</body>
+</html>

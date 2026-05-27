@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Supporto — Dispensa Famiglia</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+      background: #0a0a0f; color: #e0e0e0; min-height: 100vh;
+    }
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 32px; border-bottom: 1px solid #1c1c2e;
+      position: sticky; top: 0;
+      background: rgba(10,10,15,0.92); backdrop-filter: blur(12px); z-index: 100;
+    }
+    .nav-logo { color: #fff; font-size: 17px; font-weight: 700; text-decoration: none; }
+    .hero {
+      background: linear-gradient(160deg, #0d1a2e 0%, #0a0a0f 60%);
+      padding: 60px 24px 48px; text-align: center;
+      border-bottom: 1px solid #1c1c2e;
+    }
+    .app-icon {
+      width: 80px; height: 80px;
+      background: linear-gradient(135deg, #0a84ff, #30d158);
+      border-radius: 20px; margin: 0 auto 20px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 40px;
+      box-shadow: 0 8px 32px rgba(10,132,255,0.3);
+    }
+    .hero h1 { font-size: 30px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .hero p { color: #888; font-size: 15px; max-width: 400px; margin: 0 auto; line-height: 1.5; }
+    .container { max-width: 680px; margin: 0 auto; padding: 40px 24px 80px; }
+    .section { margin-bottom: 40px; }
+    h2 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px; }
+    .card {
+      background: #111827; border: 1px solid #1f2937;
+      border-radius: 16px; padding: 20px; margin-bottom: 12px;
+    }
+    .card h3 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .card p { font-size: 14px; color: #9ca3af; line-height: 1.6; }
+    .faq-q { font-size: 15px; font-weight: 600; color: #e0e0e0; margin-bottom: 6px; }
+    .faq-a { font-size: 14px; color: #9ca3af; line-height: 1.6; }
+    .contact-box {
+      background: linear-gradient(135deg, #0d1f3c, #0a1628);
+      border: 1px solid #1e3a5f; border-radius: 16px;
+      padding: 28px; text-align: center;
+    }
+    .contact-box p { color: #9ca3af; font-size: 15px; margin-bottom: 16px; line-height: 1.6; }
+    .contact-btn {
+      display: inline-block; background: #0a84ff; color: #fff;
+      text-decoration: none; padding: 14px 32px;
+      border-radius: 12px; font-size: 16px; font-weight: 700;
+    }
+    footer {
+      text-align: center; padding: 24px; color: #374151;
+      font-size: 13px; border-top: 1px solid #1c1c2e;
+    }
+    footer a { color: #555; text-decoration: none; }
+    footer a:hover { color: #888; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="/">← Luca Tiburzi</a>
+  </nav>
+
+  <div class="hero">
+    <div class="app-icon">🏠</div>
+    <h1>Supporto — Dispensa Famiglia</h1>
+    <p>Assistenza per l'app di gestione della dispensa domestica</p>
+  </div>
+
+  <div class="container">
+
+    <div class="section">
+      <h2>🚀 Come iniziare</h2>
+      <div class="card">
+        <h3>Creare una famiglia</h3>
+        <p>All'apertura dell'app scegli "Crea famiglia". Riceverai un codice da condividere con i membri della tua famiglia perché possano unirsi.</p>
+      </div>
+      <div class="card">
+        <h3>Unirsi a una famiglia esistente</h3>
+        <p>Scegli "Unisciti a una famiglia" e inserisci il codice condiviso da chi ha creato la famiglia. Condividerete la stessa dispensa e lista spesa.</p>
+      </div>
+      <div class="card">
+        <h3>Scannerizzare un prodotto</h3>
+        <p>Vai sulla scheda Scanner e inquadra il barcode del prodotto. In modalità ➕ lo aggiunge alla dispensa, in modalità ➖ lo rimuove. I prodotti nuovi vengono cercati automaticamente su Open Food Facts.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>❓ Domande frequenti</h2>
+      <div class="card">
+        <p class="faq-q">L'app funziona senza connessione a internet?</p>
+        <p class="faq-a">Sì. Scanner e lista spesa funzionano anche offline. Le modifiche vengono salvate in coda e sincronizzate automaticamente non appena la rete torna disponibile.</p>
+      </div>
+      <div class="card">
+        <p class="faq-q">Come si impostano le date di scadenza?</p>
+        <p class="faq-a">Apri un prodotto in dispensa e tocca "Aggiungi lotto". Inserisci la data di scadenza e la quantità. I prodotti in scadenza entro 30 giorni appaiono nella sezione "In scadenza".</p>
+      </div>
+      <div class="card">
+        <p class="faq-q">Come funziona il geofencing?</p>
+        <p class="faq-a">Dal menu famiglia puoi impostare la posizione di casa. Una volta attivato, le modifiche alla dispensa sono permesse solo quando sei nel raggio domestico. La lista spesa è sempre modificabile.</p>
+      </div>
+      <div class="card">
+        <p class="faq-q">Posso usare l'app senza Face ID?</p>
+        <p class="faq-a">Sì. Il Face ID è completamente opzionale. Puoi accedere con email e password in qualsiasi momento.</p>
+      </div>
+      <div class="card">
+        <p class="faq-q">I miei dati sono al sicuro?</p>
+        <p class="faq-a">I dati sono archiviati in modo sicuro su Supabase con autenticazione richiesta. Ogni famiglia vede esclusivamente i propri dati.</p>
+      </div>
+      <div class="card">
+        <p class="faq-q">Come posso richiedere la cancellazione dei miei dati?</p>
+        <p class="faq-a">Scrivi a <a href="mailto:privacy@lucatiburzi.it" style="color:#0a84ff;">privacy@lucatiburzi.it</a> con oggetto "Cancellazione account". Provvederemo entro 30 giorni.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>✉️ Contattaci</h2>
+      <div class="contact-box">
+        <p>Non hai trovato risposta alla tua domanda?<br/>Scrivici e ti risponderemo al più presto.</p>
+        <a class="contact-btn" href="mailto:support@lucatiburzi.it">Scrivi al supporto</a>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2025 Luca Tiburzi &nbsp;·&nbsp;
+    <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+    <a href="termini.html">Termini di servizio</a>
+  </footer>
+
+</body>
+</html>
