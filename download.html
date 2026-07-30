@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Download — LT Countdown</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+      background: #0a0a0f; color: #e0e0e0; min-height: 100vh;
+    }
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 32px; border-bottom: 1px solid #1c1c2e;
+      position: sticky; top: 0;
+      background: rgba(10,10,15,0.92); backdrop-filter: blur(12px); z-index: 100;
+    }
+    .nav-logo { color: #fff; font-size: 17px; font-weight: 700; text-decoration: none; }
+
+    .hero {
+      background: linear-gradient(160deg, #1a0d2e 0%, #0a0a0f 60%);
+      padding: 80px 32px 64px; text-align: center;
+      border-bottom: 1px solid #1c1c2e;
+    }
+    .app-icon {
+      width: 100px; height: 100px;
+      background: linear-gradient(135deg, #ff9f0a, #ff375f);
+      border-radius: 24px; margin: 0 auto 24px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 52px;
+      box-shadow: 0 12px 40px rgba(255,159,10,0.3);
+    }
+    .hero h1 { font-size: 38px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .hero .version { color: #555; font-size: 14px; margin-bottom: 12px; }
+    .hero .sub { color: #888; font-size: 17px; max-width: 480px; margin: 0 auto; line-height: 1.6; }
+
+    .container { max-width: 640px; margin: 0 auto; padding: 60px 32px 80px; }
+
+    .download-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 48px; }
+    @media (max-width: 500px) { .download-grid { grid-template-columns: 1fr; } }
+
+    .download-card {
+      background: #111827; border: 1px solid #1f2937;
+      border-radius: 20px; padding: 28px 24px;
+      text-decoration: none; color: inherit;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 12px; text-align: center;
+      transition: border-color .2s, transform .15s;
+    }
+    .download-card:hover { border-color: #ff9f0a; transform: translateY(-2px); }
+    .platform-icon { font-size: 40px; }
+    .platform-name { color: #fff; font-size: 17px; font-weight: 700; }
+    .platform-detail { color: #6b7280; font-size: 13px; }
+    .download-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff9f0a, #ff6b0a);
+      color: #fff; font-size: 14px; font-weight: 700;
+      padding: 10px 20px; border-radius: 10px;
+      margin-top: 4px;
+    }
+
+    .note {
+      background: #111827; border: 1px solid #1f2937;
+      border-radius: 16px; padding: 20px 24px;
+    }
+    .note h3 { color: #fff; font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+    .note p { color: #6b7280; font-size: 14px; line-height: 1.7; margin-bottom: 8px; }
+    .note p:last-child { margin-bottom: 0; }
+    .note code {
+      background: #1f2937; color: #e0e0e0;
+      padding: 2px 6px; border-radius: 4px; font-size: 13px;
+    }
+
+    footer {
+      text-align: center; padding: 32px; color: #374151;
+      font-size: 13px; border-top: 1px solid #1c1c2e;
+    }
+    footer a { color: #555; text-decoration: none; }
+    footer a:hover { color: #888; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="apps.html">← Le mie app</a>
+  </nav>
+
+  <div class="hero">
+    <div class="app-icon">⏱</div>
+    <h1>LT Countdown</h1>
+    <p class="version">Versione 0.5.14</p>
+    <p class="sub">Timer e countdown professionali per presentazioni ed eventi live.</p>
+  </div>
+
+  <div class="container">
+
+    <div class="download-grid">
+      <a class="download-card" href="https://github.com/4q9qpmz25f-prog/lt-countdown-releases/releases/download/mac-0.5.14/LT-Countdown-0.5.14-universal.dmg">
+        <div class="platform-icon"></div>
+        <div class="platform-name">macOS</div>
+        <div class="platform-detail">Universal · Intel + Apple Silicon</div>
+        <span class="download-btn">↓ Scarica DMG</span>
+      </a>
+      <a class="download-card" href="https://github.com/4q9qpmz25f-prog/lt-countdown-releases/releases/download/win-0.5.14/LT-Countdown.0.5.14.exe">
+        <div class="platform-icon">🪟</div>
+        <div class="platform-name">Windows</div>
+        <div class="platform-detail">Windows 10 / 11 · 64-bit</div>
+        <span class="download-btn">↓ Scarica EXE</span>
+      </a>
+    </div>
+
+    <div class="note">
+      <h3>Note di installazione</h3>
+      <p><strong style="color:#e0e0e0;">macOS:</strong> dopo aver aperto il DMG, trascina l'app nella cartella Applicazioni. Al primo avvio potresti vedere un avviso di sicurezza — vai in <code>Impostazioni → Privacy e sicurezza</code> e clicca "Apri comunque".</p>
+      <p><strong style="color:#e0e0e0;">Windows:</strong> Windows potrebbe mostrare un avviso SmartScreen al primo avvio — clicca "Ulteriori informazioni" poi "Esegui comunque".</p>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2026 Luca Tiburzi &nbsp;·&nbsp;
+    <a href="mailto:info@lucatiburzi.it">Contatti</a>
+  </footer>
+
+</body>
+</html>
