@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Luca Tiburzi — iOS Developer</title>
+  <title>Luca Tiburzi</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -11,156 +11,98 @@
       background: #0a0a0f;
       color: #e0e0e0;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* NAV */
-    nav {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 20px 32px;
-      border-bottom: 1px solid #1c1c2e;
-      position: sticky; top: 0;
-      background: rgba(10,10,15,0.92);
-      backdrop-filter: blur(12px);
-      z-index: 100;
+    .card {
+      text-align: center;
+      padding: 48px 32px;
+      max-width: 480px;
+      width: 100%;
     }
-    .nav-logo { color: #fff; font-size: 17px; font-weight: 700; text-decoration: none; }
-    .nav-links { display: flex; gap: 28px; }
-    .nav-links a { color: #888; font-size: 14px; text-decoration: none; transition: color .2s; }
-    .nav-links a:hover { color: #fff; }
 
-    /* HERO */
-    .hero {
-      padding: 100px 32px 80px;
-      max-width: 760px;
-      margin: 0 auto;
-    }
-    .hero-tag {
-      display: inline-block;
-      background: rgba(10,132,255,0.15);
-      color: #0a84ff;
-      font-size: 13px; font-weight: 600;
-      padding: 6px 14px; border-radius: 20px;
-      border: 1px solid rgba(10,132,255,0.3);
-      margin-bottom: 28px;
-    }
-    .hero h1 {
-      font-size: clamp(40px, 7vw, 64px);
-      font-weight: 800; color: #fff;
-      line-height: 1.1; margin-bottom: 20px;
-      letter-spacing: -1px;
-    }
-    .hero h1 span { color: #0a84ff; }
-    .hero p {
-      font-size: 18px; color: #888;
-      line-height: 1.7; max-width: 520px;
-      margin-bottom: 40px;
-    }
-    .hero-cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: #0a84ff; color: #fff;
-      text-decoration: none; padding: 14px 28px;
-      border-radius: 12px; font-size: 15px; font-weight: 700;
-      transition: opacity .2s;
-    }
-    .hero-cta:hover { opacity: .85; }
-
-    /* APPS */
-    .section { max-width: 760px; margin: 0 auto; padding: 60px 32px; }
-    .section-label {
-      font-size: 12px; font-weight: 700; color: #555;
-      letter-spacing: 2px; text-transform: uppercase;
-      margin-bottom: 24px;
-    }
-    .app-card {
-      background: #111827;
-      border: 1px solid #1f2937;
-      border-radius: 20px;
-      padding: 28px;
-      display: flex; gap: 20px; align-items: flex-start;
-      text-decoration: none;
-      transition: border-color .2s, transform .2s;
-    }
-    .app-card:hover { border-color: #0a84ff; transform: translateY(-2px); }
-    .app-icon {
-      width: 72px; height: 72px; flex-shrink: 0;
+    .avatar {
+      width: 80px; height: 80px;
       background: linear-gradient(135deg, #0a84ff, #30d158);
-      border-radius: 16px;
+      border-radius: 50%;
+      margin: 0 auto 28px;
       display: flex; align-items: center; justify-content: center;
       font-size: 36px;
-      box-shadow: 0 8px 24px rgba(10,132,255,0.25);
+      box-shadow: 0 8px 32px rgba(10,132,255,0.25);
     }
-    .app-info { flex: 1; }
-    .app-name { color: #fff; font-size: 19px; font-weight: 700; margin-bottom: 6px; }
-    .app-desc { color: #9ca3af; font-size: 14px; line-height: 1.6; margin-bottom: 14px; }
-    .app-badge {
-      display: inline-block;
-      background: #1f2937; color: #60a5fa;
-      font-size: 12px; font-weight: 600;
-      padding: 4px 10px; border-radius: 8px;
-      border: 1px solid #374151;
-    }
-    .app-arrow { color: #555; font-size: 20px; align-self: center; }
 
-    /* ABOUT */
-    .about { max-width: 760px; margin: 0 auto; padding: 0 32px 80px; }
-    .about-box {
-      background: #111827; border: 1px solid #1f2937;
-      border-radius: 20px; padding: 32px;
+    h1 {
+      font-size: 36px; font-weight: 800; color: #fff;
+      letter-spacing: -0.5px; margin-bottom: 12px;
     }
-    .about-box h2 { color: #fff; font-size: 22px; font-weight: 700; margin-bottom: 14px; }
-    .about-box p { color: #9ca3af; font-size: 15px; line-height: 1.8; }
 
-    /* FOOTER */
+    .tagline {
+      color: #6b7280; font-size: 16px; line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    .links {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+
+    .link-btn {
+      display: block;
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 14px;
+      padding: 16px 24px;
+      text-decoration: none;
+      color: #e0e0e0;
+      font-size: 15px; font-weight: 600;
+      transition: border-color .2s, color .2s, transform .15s;
+    }
+    .link-btn:hover {
+      border-color: #0a84ff;
+      color: #fff;
+      transform: translateY(-1px);
+    }
+    .link-btn .sub {
+      display: block;
+      font-size: 12px; font-weight: 400;
+      color: #4b5563;
+      margin-top: 3px;
+    }
+    .link-btn:hover .sub { color: #6b7280; }
+
     footer {
-      text-align: center; padding: 32px;
-      color: #374151; font-size: 13px;
-      border-top: 1px solid #1c1c2e;
+      position: fixed; bottom: 0; left: 0; right: 0;
+      text-align: center; padding: 20px;
+      color: #374151; font-size: 12px;
     }
-    footer a { color: #555; text-decoration: none; }
-    footer a:hover { color: #888; }
+    footer a { color: #4b5563; text-decoration: none; }
+    footer a:hover { color: #9ca3af; }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a class="nav-logo" href="/">Luca Tiburzi</a>
-    <div class="nav-links">
-      <a href="#app">App</a>
-      <a href="mailto:luca@lucatiburzi.it">Contatti</a>
-    </div>
-  </nav>
+  <div class="card">
+    <div class="avatar">👋</div>
+    <h1>Luca Tiburzi</h1>
+    <p class="tagline">Sviluppatore · Italia</p>
 
-  <div class="hero">
-    <div class="hero-tag">iOS Developer 🍎</div>
-    <h1>Ciao, sono<br/><span>Luca Tiburzi</span></h1>
-    <p>Sviluppo app iOS per semplificare la vita di tutti i giorni. Mi piace costruire prodotti utili, ben curati e piacevoli da usare.</p>
-    <a class="hero-cta" href="mailto:luca@lucatiburzi.it">✉️ Scrivimi</a>
-  </div>
-
-  <div class="section" id="app">
-    <div class="section-label">Le mie app</div>
-    <a class="app-card" href="dispensa-famiglia.html">
-      <div class="app-icon">🏠</div>
-      <div class="app-info">
-        <div class="app-name">Dispensa Famiglia</div>
-        <div class="app-desc">Gestisci la dispensa di casa e la lista della spesa con tutta la famiglia. Scanner barcode, date di scadenza, modalità offline e molto altro.</div>
-        <span class="app-badge">iOS · Disponibile su App Store</span>
-      </div>
-      <div class="app-arrow">›</div>
-    </a>
-  </div>
-
-  <div class="about">
-    <div class="about-box">
-      <h2>👋 Chi sono</h2>
-      <p>Sono Luca, vivo in Italia e sviluppo app iOS nel tempo libero. Mi appassiona trovare problemi concreti della vita quotidiana e trasformarli in prodotti digitali semplici ed eleganti. Dispensa Famiglia è il mio primo progetto pubblico — tanti altri sono in cantiere.</p>
+    <div class="links">
+      <a class="link-btn" href="apps.html">
+        🍎 Le mie app
+        <span class="sub">Dispensa Famiglia e altri progetti</span>
+      </a>
+      <a class="link-btn" href="mailto:luca@lucatiburzi.it">
+        ✉️ Scrivimi
+        <span class="sub">luca@lucatiburzi.it</span>
+      </a>
     </div>
   </div>
 
   <footer>
-    © 2025 Luca Tiburzi &nbsp;·&nbsp;
-    <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
-    <a href="termini.html">Termini di servizio</a> &nbsp;·&nbsp;
+    <a href="privacy.html">Privacy</a> &nbsp;·&nbsp;
+    <a href="termini.html">Termini</a> &nbsp;·&nbsp;
     <a href="supporto.html">Supporto</a>
   </footer>
 

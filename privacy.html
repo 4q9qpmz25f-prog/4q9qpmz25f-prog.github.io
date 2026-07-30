@@ -46,7 +46,7 @@
 
   <div class="hero">
     <h1>🔒 Privacy Policy</h1>
-    <p>Dispensa Famiglia · Ultimo aggiornamento: maggio 2025</p>
+    <p>Dispensa Famiglia · Ultimo aggiornamento: luglio 2026</p>
   </div>
 
   <div class="container">
@@ -63,6 +63,7 @@
       <li><strong>Dati della dispensa:</strong> nomi dei prodotti, quantità, categorie, date di scadenza e immagini associate.</li>
       <li><strong>Dati della lista spesa:</strong> voci aggiunte alla lista spesa, incluse eventuali note.</li>
       <li><strong>Dati di localizzazione:</strong> posizione geografica utilizzata esclusivamente per la funzionalità di geofencing (verifica se l'utente è a casa). I dati di posizione non vengono trasmessi ai server né conservati.</li>
+      <li><strong>Token di notifica push:</strong> identificativo anonimo del dispositivo utilizzato per l'invio di notifiche push relative a scadenze e aggiornamenti della lista spesa. Non contiene informazioni personali identificabili.</li>
       <li><strong>Dati tecnici:</strong> log di errore anonimi per migliorare la stabilità dell'App.</li>
     </ul>
 
@@ -71,21 +72,25 @@
     <ul>
       <li>Fornire e gestire il servizio (autenticazione, sincronizzazione tra dispositivi e membri della famiglia).</li>
       <li>Abilitare la condivisione della dispensa e della lista spesa all'interno del nucleo familiare.</li>
+      <li>Inviare notifiche push per avvisi di scadenza e aggiornamenti della lista spesa (solo se il consenso è stato accordato dall'utente).</li>
+      <li>Generare suggerimenti di ricette tramite intelligenza artificiale sulla base degli ingredienti selezionati dall'utente.</li>
       <li>Migliorare le funzionalità e la stabilità dell'App.</li>
       <li>Rispondere a richieste di supporto.</li>
     </ul>
 
     <h2>4. Base giuridica</h2>
-    <p>Il trattamento si basa sull'esecuzione del contratto di utilizzo dell'App (art. 6, par. 1, lett. b del GDPR) e, per i dati di localizzazione, sul consenso espresso dell'utente (art. 6, par. 1, lett. a del GDPR).</p>
+    <p>Il trattamento si basa sull'esecuzione del contratto di utilizzo dell'App (art. 6, par. 1, lett. b del GDPR) e, per i dati di localizzazione e per le notifiche push, sul consenso espresso dell'utente (art. 6, par. 1, lett. a del GDPR).</p>
 
     <h2>5. Conservazione dei dati</h2>
-    <p>I dati vengono conservati per tutta la durata dell'utilizzo dell'App e per un massimo di 30 giorni successivi alla cancellazione dell'account. I dati di localizzazione non vengono mai conservati sui server.</p>
+    <p>I dati vengono conservati per tutta la durata dell'utilizzo dell'App e per un massimo di 30 giorni successivi alla cancellazione dell'account. I dati di localizzazione non vengono mai conservati sui server. I token di notifica push vengono eliminati contestualmente alla cancellazione dell'account.</p>
 
     <h2>6. Condivisione con terze parti</h2>
     <p>I dati personali non vengono venduti né ceduti a terzi. L'App si avvale dei seguenti servizi di terze parti:</p>
     <ul>
-      <li><strong>Supabase</strong> (database e autenticazione) — i dati sono archiviati su server in Europa. Privacy Policy: <a href="https://supabase.com/privacy" target="_blank">supabase.com/privacy</a></li>
+      <li><strong>Supabase</strong> (database, autenticazione e archiviazione immagini) — i dati sono archiviati su server in Europa. Privacy Policy: <a href="https://supabase.com/privacy" target="_blank">supabase.com/privacy</a></li>
       <li><strong>Open Food Facts</strong> (ricerca prodotti tramite barcode) — i barcode vengono inviati all'API pubblica solo per ottenere nome e immagine del prodotto. Nessun dato personale viene trasmesso. Privacy Policy: <a href="https://world.openfoodfacts.org/privacy" target="_blank">openfoodfacts.org/privacy</a></li>
+      <li><strong>Google (Gemini AI)</strong> (suggerimenti ricette) — i nomi degli ingredienti selezionati dall'utente vengono inviati al modello di intelligenza artificiale Gemini di Google tramite un servizio intermediario sicuro, al solo scopo di generare suggerimenti di ricette. Non vengono trasmessi dati identificativi dell'utente. Privacy Policy: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></li>
+      <li><strong>Expo (Expo Push Service)</strong> (notifiche push) — i token di notifica push vengono utilizzati dal servizio Expo per recapitare notifiche al dispositivo dell'utente. Privacy Policy: <a href="https://expo.dev/privacy" target="_blank">expo.dev/privacy</a></li>
     </ul>
 
     <h2>7. Diritti dell'interessato</h2>
@@ -115,7 +120,7 @@
   </div>
 
   <footer>
-    © 2025 Luca Tiburzi &nbsp;·&nbsp;
+    © 2026 Luca Tiburzi &nbsp;·&nbsp;
     <a href="termini.html">Termini di servizio</a> &nbsp;·&nbsp;
     <a href="supporto.html">Supporto</a>
   </footer>

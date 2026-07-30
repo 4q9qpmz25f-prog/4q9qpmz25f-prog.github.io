@@ -93,6 +93,42 @@
     </div>
 
     <div class="section">
+      <h2>📱 Widget iOS</h2>
+      <div class="card">
+        <h3>Come aggiungo il widget alla Home Screen?</h3>
+        <p>Tieni premuto su uno spazio vuoto della Home Screen, tocca ➕ in alto a sinistra e cerca "Dispensa Famiglia". Puoi scegliere il widget piccolo (lista spesa) o medio (lista spesa + scadenze). I dati si aggiornano automaticamente. Richiede iOS 17 o superiore.</p>
+      </div>
+      <div class="card">
+        <h3>Il widget non mostra i dati aggiornati</h3>
+        <p>Apri l'app almeno una volta per aggiornare i dati condivisi con il widget. iOS decide autonomamente la frequenza di refresh del widget — per forzare un aggiornamento immediato, apri e chiudi l'app.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>🍽️ Ricette AI</h2>
+      <div class="card">
+        <h3>Come funzionano le Ricette AI?</h3>
+        <p>Vai nella scheda Ricette e seleziona gli ingredienti disponibili. Puoi contrassegnare i prodotti in dispensa come "per ricette" dal loro menu. Tocca "Genera ricette" e l'intelligenza artificiale suggerisce piatti basati su quello che hai in casa. Le ricette sono salvate e condivise con tutta la famiglia.</p>
+      </div>
+      <div class="card">
+        <h3>La generazione richiede connessione a internet?</h3>
+        <p>Sì. Le Ricette AI richiedono una connessione attiva per interrogare il modello di intelligenza artificiale. Le ricette già salvate sono accessibili anche offline.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>🏡 Home Assistant</h2>
+      <div class="card">
+        <h3>Come configuro l'integrazione con Home Assistant?</h3>
+        <p>Vai in Impostazioni (⚙️) → Home Assistant → tocca "Genera token". Poi usa il pulsante "Condividi configurazione" per ottenere le istruzioni complete: troverai il sensore da aggiungere al tuo <code style="background:#1f2937;padding:2px 6px;border-radius:4px;font-size:13px;">configuration.yaml</code> e le card Lovelace pronte all'uso.</p>
+      </div>
+      <div class="card">
+        <h3>Il sensore non si aggiorna automaticamente</h3>
+        <p>Il sensore Home Assistant si aggiorna solo su richiesta (trigger manuale o automazione). Aggiungi il bottone di refresh fornito nella card Lovelace, oppure crea un'automazione che chiami <code style="background:#1f2937;padding:2px 6px;border-radius:4px;font-size:13px;">homeassistant.update_entity</code> con la frequenza che preferisci.</p>
+      </div>
+    </div>
+
+    <div class="section">
       <h2>❓ Domande frequenti</h2>
       <div class="card">
         <p class="faq-q">L'app funziona senza connessione a internet?</p>
@@ -100,23 +136,23 @@
       </div>
       <div class="card">
         <p class="faq-q">Come si impostano le date di scadenza?</p>
-        <p class="faq-a">Apri un prodotto in dispensa e tocca "Aggiungi lotto". Inserisci la data di scadenza e la quantità. I prodotti in scadenza entro 30 giorni appaiono nella sezione "In scadenza".</p>
+        <p class="faq-a">Apri un prodotto in dispensa e tocca "Aggiungi lotto". Inserisci la data di scadenza e la quantità. Puoi anche scannerizzare l'etichetta con la fotocamera — l'app riconosce automaticamente la data. I prodotti in scadenza appaiono nella sezione dedicata.</p>
       </div>
       <div class="card">
         <p class="faq-q">Come funziona il geofencing?</p>
-        <p class="faq-a">Dal menu famiglia puoi impostare la posizione di casa. Una volta attivato, le modifiche alla dispensa sono permesse solo quando sei nel raggio domestico. La lista spesa è sempre modificabile.</p>
+        <p class="faq-a">Dal menu famiglia puoi impostare la posizione di casa. Una volta attivato, le modifiche alla dispensa sono permesse solo quando sei nel raggio domestico. La lista spesa è sempre modificabile ovunque.</p>
       </div>
       <div class="card">
-        <p class="faq-q">Posso usare l'app senza Face ID?</p>
-        <p class="faq-a">Sì. Il Face ID è completamente opzionale. Puoi accedere con email e password in qualsiasi momento.</p>
+        <p class="faq-q">Come attivo le notifiche push?</p>
+        <p class="faq-a">Vai in Impostazioni (⚙️) e attiva "Notifiche scadenza" e/o "Notifiche lista spesa". L'app richiederà il permesso di invio notifiche. Le notifiche di scadenza arrivano ogni mattina; quelle di lista spesa arrivano in tempo reale quando un membro aggiunge un prodotto.</p>
       </div>
       <div class="card">
         <p class="faq-q">I miei dati sono al sicuro?</p>
-        <p class="faq-a">I dati sono archiviati in modo sicuro su Supabase con autenticazione richiesta. Ogni famiglia vede esclusivamente i propri dati.</p>
+        <p class="faq-a">I dati sono archiviati in modo sicuro su Supabase con autenticazione richiesta. Ogni famiglia vede esclusivamente i propri dati grazie al Row Level Security.</p>
       </div>
       <div class="card">
         <p class="faq-q">Come posso richiedere la cancellazione dei miei dati?</p>
-        <p class="faq-a">Scrivi a <a href="mailto:privacy@lucatiburzi.it" style="color:#0a84ff;">privacy@lucatiburzi.it</a> con oggetto "Cancellazione account". Provvederemo entro 30 giorni.</p>
+        <p class="faq-a">Puoi eliminare il tuo account direttamente dall'app in Impostazioni → Elimina account. In alternativa scrivi a <a href="mailto:privacy@lucatiburzi.it" style="color:#0a84ff;">privacy@lucatiburzi.it</a> con oggetto "Cancellazione account". Provvederemo entro 30 giorni.</p>
       </div>
     </div>
 
@@ -131,7 +167,7 @@
   </div>
 
   <footer>
-    © 2025 Luca Tiburzi &nbsp;·&nbsp;
+    © 2026 Luca Tiburzi &nbsp;·&nbsp;
     <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
     <a href="termini.html">Termini di servizio</a>
   </footer>
