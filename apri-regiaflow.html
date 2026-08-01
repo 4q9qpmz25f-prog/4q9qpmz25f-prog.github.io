@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apri RegiaFlow</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+      background: #0a0a0f; color: #e0e0e0; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 32px;
+    }
+    .card { max-width: 420px; width: 100%; text-align: center; }
+    .app-icon {
+      width: 88px; height: 88px;
+      background: linear-gradient(135deg, #ff375f, #7c3aed);
+      border-radius: 20px; margin: 0 auto 24px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 44px;
+      box-shadow: 0 12px 36px rgba(255,55,95,0.3);
+    }
+    h1 { font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .sub { color: #888; font-size: 15px; margin-bottom: 36px; line-height: 1.6; }
+    .choices { display: flex; flex-direction: column; gap: 12px; }
+    .choice {
+      display: flex; align-items: center; gap: 16px;
+      background: #111827; border: 1px solid #1f2937;
+      border-radius: 14px; padding: 16px 20px;
+      text-decoration: none; color: inherit;
+      transition: border-color .2s, transform .15s;
+    }
+    .choice:hover { border-color: #ff375f; transform: translateY(-1px); }
+    .choice-icon { font-size: 26px; flex-shrink: 0; }
+    .choice-text { text-align: left; flex: 1; }
+    .choice-name { color: #fff; font-size: 15px; font-weight: 700; }
+    .choice-detail { color: #6b7280; font-size: 12px; margin-top: 2px; }
+    .note { color: #4b5563; font-size: 12px; margin-top: 28px; line-height: 1.6; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="app-icon">🎬</div>
+    <h1>RegiaFlow</h1>
+    <p class="sub">Scegli come vuoi aprirlo.</p>
+
+    <div class="choices">
+      <a class="choice" href="https://lucatiburzi.it/regiaflow/">
+        <div class="choice-icon">🌐</div>
+        <div class="choice-text">
+          <div class="choice-name">Apri nel browser</div>
+          <div class="choice-detail">Nessuna installazione — funziona subito</div>
+        </div>
+      </a>
+      <a class="choice" href="https://github.com/4q9qpmz25f-prog/regiaflow-releases/releases/download/v0.1.0/RegiaFlow_0.1.0_aarch64.dmg">
+        <div class="choice-icon">🍎</div>
+        <div class="choice-text">
+          <div class="choice-name">Scarica per Mac</div>
+          <div class="choice-detail">Apple Silicon · v0.1.0</div>
+        </div>
+      </a>
+      <a class="choice" href="https://github.com/4q9qpmz25f-prog/regiaflow-releases/releases/download/v0.1.0/regiaflow.exe">
+        <div class="choice-icon">🪟</div>
+        <div class="choice-text">
+          <div class="choice-name">Scarica per Windows</div>
+          <div class="choice-detail">Windows 10 / 11 · 64-bit · v0.1.0</div>
+        </div>
+      </a>
+    </div>
+
+    <p class="note">Mac: al primo avvio vai in Impostazioni → Privacy e sicurezza → "Apri comunque" se richiesto.<br/>Windows: se compare SmartScreen, scegli "Ulteriori informazioni" → "Esegui comunque".</p>
+  </div>
+
+</body>
+</html>
