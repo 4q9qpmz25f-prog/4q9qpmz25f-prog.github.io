@@ -74,13 +74,15 @@
   </div>
 
   <script>
-    // Se si arriva qui da un link email con ?email=..., lo passiamo alla
-    // webapp così il form di login salta subito a "inserisci codice" con
-    // l'indirizzo già compilato, invece di dover ripartire da capo.
-    var email = new URLSearchParams(window.location.search).get('email');
-    if (email) {
+    // Se si arriva qui da un link email con parametri (?email=..., e per il
+    // login anche &skip=1), li passiamo alla webapp così il form di login
+    // precompila l'indirizzo — e per il login salta anche direttamente a
+    // "inserisci codice" (skip=1, presente solo quando un codice è già
+    // stato mandato nella stessa email; l'invito invece non ne manda uno,
+    // quindi resta sulla schermata che lo invia).
+    if (window.location.search) {
       var link = document.getElementById('open-web');
-      link.href = link.href + '?email=' + encodeURIComponent(email);
+      link.href = link.href + window.location.search;
     }
   </script>
 </body>
