@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RegiaFlow — Scalette di regia per eventi live</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+      background: #0a0a0f; color: #e0e0e0; min-height: 100vh;
+    }
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 32px; border-bottom: 1px solid #1c1c2e;
+      position: sticky; top: 0;
+      background: rgba(10,10,15,0.92); backdrop-filter: blur(12px); z-index: 100;
+    }
+    .nav-logo { color: #fff; font-size: 17px; font-weight: 700; text-decoration: none; }
+    .nav-links a { color: #888; font-size: 14px; text-decoration: none; }
+    .nav-links a:hover { color: #fff; }
+
+    .hero {
+      background: linear-gradient(160deg, #2e0d1a 0%, #0a0a0f 60%);
+      padding: 80px 32px 64px; text-align: center;
+      border-bottom: 1px solid #1c1c2e;
+    }
+    .app-icon {
+      width: 100px; height: 100px;
+      background: linear-gradient(135deg, #ff375f, #7c3aed);
+      border-radius: 24px; margin: 0 auto 24px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 52px;
+      box-shadow: 0 12px 40px rgba(255,55,95,0.3);
+    }
+    .hero h1 { font-size: 38px; font-weight: 800; color: #fff; margin-bottom: 12px; }
+    .hero .sub { color: #888; font-size: 17px; max-width: 480px; margin: 0 auto 36px; line-height: 1.6; }
+    .store-btn {
+      display: inline-block;
+      background: #fff; color: #000;
+      text-decoration: none; padding: 14px 32px;
+      border-radius: 14px; font-size: 16px; font-weight: 700;
+      transition: opacity .2s;
+    }
+    .store-btn:hover { opacity: .85; }
+    .store-btn.secondary {
+      background: #1f2937; color: #e0e0e0; margin-left: 12px;
+    }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 60px 32px 80px; }
+    .features-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px; margin-bottom: 60px;
+    }
+    .feature {
+      background: #111827; border: 1px solid #1f2937;
+      border-radius: 16px; padding: 22px;
+    }
+    .feature.highlight { border-color: rgba(255,55,95,0.3); background: #29101a; }
+    .feature-icon { font-size: 28px; margin-bottom: 12px; }
+    .feature h3 { color: #fff; font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .feature p { color: #9ca3af; font-size: 13px; line-height: 1.6; }
+
+    .section-title { color: #fff; font-size: 22px; font-weight: 700; margin-bottom: 20px; }
+    .note {
+      background: #111827; border: 1px solid #1f2937;
+      border-radius: 16px; padding: 20px 24px; margin-bottom: 40px;
+    }
+    .note p { color: #6b7280; font-size: 14px; line-height: 1.7; }
+
+    footer {
+      text-align: center; padding: 32px; color: #374151;
+      font-size: 13px; border-top: 1px solid #1c1c2e;
+    }
+    footer a { color: #555; text-decoration: none; }
+    footer a:hover { color: #888; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="apps.html">← Le mie app</a>
+    <div class="nav-links">
+      <a href="mailto:luca@lucatiburzi.it">Contatti</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="app-icon">🎬</div>
+    <h1>RegiaFlow</h1>
+    <p class="sub">La scaletta di regia condivisa in tempo reale per tutta la squadra — sostituisce il foglio Excel su Google Drive, con calcolo automatico dei tempi e viste personali per ognuno.</p>
+    <a class="store-btn" href="regiaflow/">🌐 Apri RegiaFlow</a>
+    <a class="store-btn secondary" href="#" style="cursor:default; pointer-events:none;">🖥️ App desktop Mac/Windows su richiesta</a>
+  </div>
+
+  <div class="container">
+
+    <div class="features-grid">
+      <div class="feature highlight">
+        <div class="feature-icon">⏱️</div>
+        <h3>Tempi a cascata</h3>
+        <p>Basta inserire la durata di un cue: orario di inizio e durata totale si ricalcolano da soli per tutti, in tempo reale.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">👥</div>
+        <h3>Verità condivisa</h3>
+        <p>Un'unica scaletta sincronizzata per tutta la squadra di regia — nessuna copia, nessun file da rimandare via mail.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🎛️</div>
+        <h3>Colonne per reparto</h3>
+        <p>Audio, luci, ledwall, video: colonne configurabili per ogni evento, non uno schema fisso.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🙈</div>
+        <h3>Vista personale</h3>
+        <p>Ognuno nasconde le colonne che non gli servono e scrive note private per cue — senza toccare il dato di tutti.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🔐</div>
+        <h3>Ruoli e permessi</h3>
+        <p>Editor, Collaboratore, Sola lettura: chi può modificare, chi può solo aggiungere contenuti, chi guarda soltanto.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">✉️</div>
+        <h3>Inviti via email</h3>
+        <p>Aggiungi una persona con un'email e un ruolo: al primo accesso viene agganciata automaticamente all'evento.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🎨</div>
+        <h3>Branding per evento</h3>
+        <p>Titolo e logo personalizzati per ogni cliente/evento, così ogni scaletta ha la sua identità.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📅</div>
+        <h3>Più eventi, più fogli</h3>
+        <p>Gestisci più produzioni in parallelo e passa dall'una all'altra con un menu, senza perdere niente.</p>
+      </div>
+    </div>
+
+    <div class="note">
+      <p>RegiaFlow è nato per la squadra di regia negli eventi live, come alternativa al foglio Excel condiviso su Google Drive. Gira nel browser, oppure come app desktop per Mac e Windows.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2026 Luca Tiburzi
+  </footer>
+
+</body>
+</html>
