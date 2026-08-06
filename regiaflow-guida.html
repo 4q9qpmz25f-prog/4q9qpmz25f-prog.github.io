@@ -116,7 +116,6 @@
       letter-spacing: 0.04em; padding: 2px 8px; border-radius: 20px;
       background: rgba(255,55,95,0.15); color: #ff6b8a; margin-left: 6px;
     }
-    .pill.admin { background: rgba(124,58,237,0.2); color: #b794f6; }
     .pill.editor { background: rgba(34,197,94,0.15); color: #4ade80; }
 
     .swatch { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
@@ -181,7 +180,6 @@
         <h4>Squadra e accessi</h4>
         <a href="#membri-permessi">Membri e permessi</a>
         <a href="#gestione-pagina">Pagina Gestione</a>
-        <a href="#amministrazione">Amministrazione</a>
       </div>
       <div class="toc-group">
         <h4>Altro</h4>
@@ -205,14 +203,17 @@
           <p>Se sei stato invitato a un evento, la mail di invito contiene un link diretto: aprendolo arrivi già nella schermata giusta.</p>
         </div>
         <div class="card">
-          <h3>I quattro ruoli</h3>
+          <h3>I tre ruoli</h3>
           <ul>
             <li><strong>Editor</strong><span class="pill editor">Editor</span> — può modificare tutto: scaletta, cue, colonne, categorie, membri, può eliminare fogli/eventi.</li>
             <li><strong>Collaboratore</strong> — può inserire e modificare contenuti nella scaletta (cue, testi, spostare il cue "in onda"), ma non può eliminare cue/colonne/fogli/eventi né gestire i membri.</li>
             <li><strong>Sola lettura</strong> — vede la scaletta in tempo reale ma non può modificare nulla del contenuto condiviso (può comunque usare i propri filtri/note personali).</li>
-            <li><strong>Admin</strong><span class="pill admin">Admin</span> — un ruolo a parte, valido su tutta la piattaforma (non solo un evento): vede e gestisce tutti gli eventi e utenti dal pannello Amministrazione. Vedi la sezione dedicata.</li>
           </ul>
           <p>I permessi valgono sia nell'interfaccia sia lato server: anche provando ad aggirare i pulsanti nascosti, il database rifiuta comunque l'operazione.</p>
+        </div>
+        <div class="card">
+          <h3>Il tuo nome, al posto dell'email</h3>
+          <p>In alto a destra nella scaletta trovi il campo "Nome" — scrivi come vuoi essere riconosciuto (es. "Marco audio") e da quel momento comparirà al posto della tua email ovunque si mostri chi ha fatto una modifica o chi la sta scrivendo in quel momento.</p>
         </div>
       </section>
 
@@ -221,7 +222,7 @@
         <p class="lede">Il primo passo per iniziare una nuova produzione.</p>
         <div class="card">
           <h3>Dove</h3>
-          <p>In Gestione → "I miei eventi" → bottone <strong>+ nuovo evento</strong> in fondo alla lista. Serve il permesso "Può creare eventi" (lo assegna un admin dal pannello Amministrazione, oppure lo hai già se qualcuno ti ha invitato come "regista").</p>
+          <p>In Gestione → "I miei eventi" → bottone <strong>+ nuovo evento</strong> in fondo alla lista. Serve il permesso "Può creare eventi", che di solito hai già se sei stato invitato come "regista" — altrimenti chiedilo a chi gestisce l'app.</p>
         </div>
         <div class="card">
           <h3>Nome, titolo e logo</h3>
@@ -243,6 +244,10 @@
         <div class="card">
           <h3>Creare un foglio</h3>
           <p>In Gestione, dentro l'evento selezionato: bottone <strong>+ nuovo foglio</strong>. Dagli subito un nome chiaro (es. "DAY 1", "Prove", "Show serale").</p>
+        </div>
+        <div class="card">
+          <h3>Aprire un foglio</h3>
+          <p>In Gestione, dentro l'evento giusto, clicca semplicemente sul nome del foglio nella lista: ti porta dritto nella scaletta vera e propria, pronta per essere letta o modificata.</p>
         </div>
         <div class="card">
           <h3>Rinominare un foglio</h3>
@@ -344,8 +349,13 @@
           <p>Su ogni casella condivisa (non solo le categorie) puoi marcare uno sfondo colorato tutto tuo, per evidenziare qualcosa che ti serve tenere d'occhio — un piccolo selettore colore compare passandoci sopra col mouse.</p>
         </div>
         <div class="card">
-          <h3>Dimensioni</h3>
-          <p>Dimensione del testo, larghezza delle colonne e altezza delle righe sono tutte regolabili trascinando i bordi — anche queste restano solo nella tua vista.</p>
+          <h3>Ridimensionare testo, colonne e righe</h3>
+          <p>Anche queste regolazioni restano solo nella tua vista, non cambiano nulla per gli altri:</p>
+          <ul>
+            <li><strong>Dimensione del testo</strong> — apri "Filtri ▾" nell'intestazione: in fondo trovi "Testo" con i bottoni <span class="kbd">−</span> / <span class="kbd">+</span> (da 10 a 22px).</li>
+            <li><strong>Larghezza di una colonna</strong> — avvicina il mouse al bordo destro dell'intestazione della colonna: compare una piccola maniglia, trascinala per allargare o stringere.</li>
+            <li><strong>Altezza di una riga</strong> — stesso principio sul bordo in basso della cella del numero cue: trascina per rendere quella riga più alta o più bassa (utile quando un testo è lungo).</li>
+          </ul>
         </div>
       </section>
 
@@ -403,28 +413,7 @@
         <h2><span class="section-icon">🗂️</span> Pagina Gestione</h2>
         <p class="lede">Eventi, fogli, permessi e stampa vivono in una pagina separata dalla scaletta — niente distrazioni durante lo show.</p>
         <div class="card">
-          <p>Ci arrivi dal link "Gestione ↗" nell'intestazione della scaletta, oppure direttamente da <a href="https://lucatiburzi.it/regiaflow-gestione/">lucatiburzi.it/regiaflow-gestione/</a>. Da lì: "I miei eventi" (creare/rinominare/eliminare eventi e fogli), "Stampa", e — solo per gli admin — "Amministrazione". Un link "Apri la scaletta ↗" riporta indietro.</p>
-        </div>
-      </section>
-
-      <section class="guide-section" id="amministrazione">
-        <h2><span class="section-icon">🛡️</span> Amministrazione <span class="pill admin">Solo admin</span></h2>
-        <p class="lede">Visione e controllo su tutta la piattaforma, non solo sui propri eventi.</p>
-        <div class="card">
-          <h3>Chi la vede</h3>
-          <p>Solo chi ha il ruolo di amministratore — per chiunque altro il pulsante "Amministrazione" non compare nemmeno.</p>
-        </div>
-        <div class="card">
-          <h3>Cosa puoi fare da lì</h3>
-          <ul>
-            <li>Vedere tutti gli utenti registrati, e concedere/togliere il permesso <strong>"Può creare eventi"</strong> — chi lo ha può crearsi eventi propri da zero, senza bisogno che qualcuno lo aggiunga prima come membro di un evento esistente.</li>
-            <li>Concedere o togliere il ruolo <strong>Admin</strong> ad altri utenti.</li>
-            <li>Vedere tutti gli eventi della piattaforma (non solo i propri) ed eliminarli, se necessario — con la stessa conferma "scrivi il nome esatto" usata ovunque per le cancellazioni.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>L'account amministratore principale è protetto</h3>
-          <p>Nessuno — nemmeno un altro admin — può togliere il ruolo admin all'account principale della piattaforma: il controllo non si perde mai per errore.</p>
+          <p>Ci arrivi dal link "Gestione ↗" nell'intestazione della scaletta, oppure direttamente da <a href="https://lucatiburzi.it/regiaflow-gestione/">qui</a>. Da lì: "I miei eventi" (creare/rinominare/eliminare eventi e fogli) e "Stampa". Un link "Apri la scaletta ↗" riporta indietro.</p>
         </div>
       </section>
 
@@ -436,7 +425,11 @@
             <li><strong>Browser</strong> — nessuna installazione, sempre aggiornato da solo appena c'è una modifica.</li>
             <li><strong>App desktop Mac/Windows</strong> — si scarica da <a href="apri-regiaflow.html">questa pagina</a>. Quando esce una nuova versione, l'app te lo segnala da sola con un avviso in alto a sinistra.</li>
           </ul>
-          <p>La pagina Gestione (eventi, stampa, amministrazione) è sempre caricata "fresca" dal sito anche quando la apri dall'app desktop — solo la scaletta vera e propria richiede di scaricare una nuova versione quando cambia qualcosa lì.</p>
+          <p>La pagina Gestione (eventi, fogli, stampa) è sempre caricata "fresca" dal sito anche quando la apri dall'app desktop — solo la scaletta vera e propria richiede di scaricare una nuova versione quando cambia qualcosa lì.</p>
+        </div>
+        <div class="card">
+          <h3>Ridimensionare la finestra dell'app</h3>
+          <p>Su Mac e Windows è una finestra come tutte le altre: si apre a schermo intero ma puoi ridimensionarla o affiancarla ad altre app trascinandone i bordi o l'angolo, esattamente come qualsiasi altro programma.</p>
         </div>
       </section>
 
@@ -466,7 +459,7 @@
         </div>
         <div class="card">
           <p class="faq-q">Come faccio a diventare "regista" e creare eventi miei?</p>
-          <p>Serve il permesso "Può creare eventi", che solo un amministratore può concederti dal pannello Amministrazione — o essere invitato direttamente come tale.</p>
+          <p>Serve il permesso "Può creare eventi" — chiedilo a chi gestisce l'app, oppure fatti invitare direttamente come "regista".</p>
         </div>
         <div class="card">
           <p class="faq-q">L'app desktop mi dice che c'è una nuova versione</p>
