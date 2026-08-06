@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guida RegiaFlow</title>
+  <link rel="icon" type="image/svg+xml" href="/regiaflow/favicon.svg" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+      background: #0a0a0f; color: #d6d6de; min-height: 100vh;
+      line-height: 1.6;
+    }
+    a { color: #ff6b8a; }
+
+    nav.topbar {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 16px 32px; border-bottom: 1px solid #1c1c2e;
+      position: sticky; top: 0;
+      background: rgba(10,10,15,0.94); backdrop-filter: blur(12px); z-index: 100;
+      flex-wrap: wrap;
+    }
+    .nav-logo { color: #fff; font-size: 16px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+    .nav-links { display: flex; gap: 16px; align-items: center; }
+    .nav-links a { color: #888; font-size: 13px; text-decoration: none; white-space: nowrap; }
+    .nav-links a:hover { color: #fff; }
+
+    .search-wrap {
+      max-width: 900px; margin: 0 auto; padding: 28px 24px 8px;
+    }
+    .search-box {
+      position: relative;
+    }
+    .search-box input {
+      width: 100%;
+      background: #12121a; border: 1px solid #2a2a3a; color: #fff;
+      border-radius: 14px; padding: 16px 48px 16px 48px;
+      font-size: 16px; font-family: inherit;
+    }
+    .search-box input:focus { outline: none; border-color: #ff375f; }
+    .search-box input::placeholder { color: #6b7280; }
+    .search-icon {
+      position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
+      font-size: 18px; opacity: 0.6; pointer-events: none;
+    }
+    .search-clear {
+      position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+      background: #2a2a3a; border: none; color: #ccc; width: 26px; height: 26px;
+      border-radius: 50%; cursor: pointer; display: none; font-size: 14px; line-height: 1;
+    }
+    .search-clear.visible { display: block; }
+    .search-status { font-size: 13px; color: #6b7280; margin-top: 10px; min-height: 18px; }
+    mark { background: rgba(255,55,95,0.35); color: #fff; border-radius: 3px; padding: 0 2px; }
+
+    .layout {
+      max-width: 900px; margin: 0 auto; padding: 8px 24px 100px;
+      display: grid; grid-template-columns: 200px 1fr; gap: 40px;
+    }
+    @media (max-width: 720px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc { display: none; }
+    }
+
+    .toc {
+      position: sticky; top: 90px; align-self: start;
+      max-height: calc(100vh - 110px); overflow-y: auto;
+    }
+    .toc-group { margin-bottom: 18px; }
+    .toc-group h4 {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
+      color: #4b5563; margin-bottom: 8px; font-weight: 700;
+    }
+    .toc a {
+      display: block; font-size: 13px; color: #9ca3af; text-decoration: none;
+      padding: 4px 0; border-left: 2px solid transparent; padding-left: 10px;
+      margin-left: -1px;
+    }
+    .toc a:hover { color: #fff; }
+
+    main { min-width: 0; }
+
+    .hero-mini { margin-bottom: 36px; }
+    .hero-mini h1 { color: #fff; font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+    .hero-mini p { color: #9ca3af; font-size: 15px; max-width: 560px; }
+
+    section.guide-section {
+      margin-bottom: 44px; scroll-margin-top: 90px;
+    }
+    section.guide-section.hidden-by-search { display: none; }
+    section.guide-section h2 {
+      color: #fff; font-size: 20px; font-weight: 700; margin-bottom: 6px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    section.guide-section .section-icon { font-size: 20px; }
+    section.guide-section > p.lede { color: #9ca3af; font-size: 14px; margin-bottom: 18px; }
+
+    .card {
+      background: #111827; border: 1px solid #1f2937;
+      border-radius: 14px; padding: 18px 20px; margin-bottom: 12px;
+    }
+    .card h3 { color: #fff; font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .card p, .card li { color: #9ca3af; font-size: 13.5px; }
+    .card ul, .card ol { margin: 6px 0 0 18px; }
+    .card li { margin-bottom: 4px; }
+    .card p + p { margin-top: 8px; }
+
+    .kbd {
+      display: inline-block; background: #1f2937; border: 1px solid #374151;
+      border-radius: 5px; padding: 1px 7px; font-size: 12px; color: #e5e7eb;
+      font-family: ui-monospace, monospace;
+    }
+    .pill {
+      display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.04em; padding: 2px 8px; border-radius: 20px;
+      background: rgba(255,55,95,0.15); color: #ff6b8a; margin-left: 6px;
+    }
+    .pill.admin { background: rgba(124,58,237,0.2); color: #b794f6; }
+    .pill.editor { background: rgba(34,197,94,0.15); color: #4ade80; }
+
+    .swatch { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
+    .swatch.red { background: #e21f1f; }
+    .swatch.green { background: #2fbf4f; }
+    .swatch.off { background: #303030; border: 1px solid #444; }
+
+    .faq-q { color: #fff; font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+    .faq-q::before { content: "❓ "; }
+
+    footer {
+      text-align: center; padding: 32px; color: #374151;
+      font-size: 13px; border-top: 1px solid #1c1c2e;
+    }
+    footer a { color: #555; text-decoration: none; }
+    footer a:hover { color: #888; }
+
+    #no-results { display: none; color: #6b7280; font-size: 14px; padding: 40px 0; text-align: center; }
+  </style>
+</head>
+<body>
+
+  <nav class="topbar">
+    <a class="nav-logo" href="regiaflow.html">🎬 RegiaFlow — Guida</a>
+    <div class="nav-links">
+      <a href="apri-regiaflow.html">Scarica l'app</a>
+      <a href="mailto:luca@lucatiburzi.it">Contatti</a>
+    </div>
+  </nav>
+
+  <div class="search-wrap">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search" placeholder="Cerca un argomento — es. “live cue”, “stampa”, “inviti”, “colori”…" autocomplete="off" />
+      <button class="search-clear" id="search-clear" type="button" title="Cancella">✕</button>
+    </div>
+    <div class="search-status" id="search-status"></div>
+  </div>
+
+  <div class="layout">
+    <nav class="toc" id="toc">
+      <div class="toc-group">
+        <h4>Per iniziare</h4>
+        <a href="#primi-passi">Accesso e ruoli</a>
+        <a href="#creare-evento">Creare un evento</a>
+        <a href="#fogli">Fogli</a>
+      </div>
+      <div class="toc-group">
+        <h4>La scaletta</h4>
+        <a href="#scaletta-base">Cue e tempi a cascata</a>
+        <a href="#categorie-colori">Categorie e colori</a>
+        <a href="#colonne-reparto">Colonne di reparto</a>
+        <a href="#live-cue">In onda (live cue)</a>
+        <a href="#vista-personale">Vista personale</a>
+      </div>
+      <div class="toc-group">
+        <h4>Durante lo show</h4>
+        <a href="#stampa">Stampa</a>
+        <a href="#sincronizzazione">Sincronizzazione</a>
+      </div>
+      <div class="toc-group">
+        <h4>Squadra e accessi</h4>
+        <a href="#membri-permessi">Membri e permessi</a>
+        <a href="#gestione-pagina">Pagina Gestione</a>
+        <a href="#amministrazione">Amministrazione</a>
+      </div>
+      <div class="toc-group">
+        <h4>Altro</h4>
+        <a href="#app-desktop-web">App desktop o browser?</a>
+        <a href="#domande-frequenti">Domande frequenti</a>
+      </div>
+    </nav>
+
+    <main id="main">
+      <div class="hero-mini">
+        <h1>Guida a RegiaFlow</h1>
+        <p>Tutto quello che serve per partire da zero: creare un evento, costruire la scaletta, lavorare in squadra durante lo show e risolvere i dubbi più comuni. Usa la barra di ricerca qui sopra per saltare subito all'argomento che ti interessa.</p>
+      </div>
+
+      <section class="guide-section" id="primi-passi">
+        <h2><span class="section-icon">🔑</span> Accesso e ruoli</h2>
+        <p class="lede">Come si entra in RegiaFlow e chi può fare cosa.</p>
+        <div class="card">
+          <h3>Login senza password</h3>
+          <p>Si accede scrivendo la propria email e ricevendo un codice via posta — nessuna password da ricordare. Il codice arriva in pochi secondi; se non lo vedi controlla anche lo spam.</p>
+          <p>Se sei stato invitato a un evento, la mail di invito contiene un link diretto: aprendolo arrivi già nella schermata giusta.</p>
+        </div>
+        <div class="card">
+          <h3>I quattro ruoli</h3>
+          <ul>
+            <li><strong>Editor</strong><span class="pill editor">Editor</span> — può modificare tutto: scaletta, cue, colonne, categorie, membri, può eliminare fogli/eventi.</li>
+            <li><strong>Collaboratore</strong> — può inserire e modificare contenuti nella scaletta (cue, testi, spostare il cue "in onda"), ma non può eliminare cue/colonne/fogli/eventi né gestire i membri.</li>
+            <li><strong>Sola lettura</strong> — vede la scaletta in tempo reale ma non può modificare nulla del contenuto condiviso (può comunque usare i propri filtri/note personali).</li>
+            <li><strong>Admin</strong><span class="pill admin">Admin</span> — un ruolo a parte, valido su tutta la piattaforma (non solo un evento): vede e gestisce tutti gli eventi e utenti dal pannello Amministrazione. Vedi la sezione dedicata.</li>
+          </ul>
+          <p>I permessi valgono sia nell'interfaccia sia lato server: anche provando ad aggirare i pulsanti nascosti, il database rifiuta comunque l'operazione.</p>
+        </div>
+      </section>
+
+      <section class="guide-section" id="creare-evento">
+        <h2><span class="section-icon">🆕</span> Creare un evento</h2>
+        <p class="lede">Il primo passo per iniziare una nuova produzione.</p>
+        <div class="card">
+          <h3>Dove</h3>
+          <p>In Gestione → "I miei eventi" → bottone <strong>+ nuovo evento</strong> in fondo alla lista. Serve il permesso "Può creare eventi" (lo assegna un admin dal pannello Amministrazione, oppure lo hai già se qualcuno ti ha invitato come "regista").</p>
+        </div>
+        <div class="card">
+          <h3>Nome, titolo e logo</h3>
+          <p>Dopo averlo creato, selezionalo dalla lista per vedere i suoi campi:</p>
+          <ul>
+            <li><strong>Nome evento</strong> — l'identificativo vero, quello che vedi nella lista e che serve per confermare un'eliminazione.</li>
+            <li><strong>Titolo / logo evento</strong> — un campo separato, puramente estetico: personalizza l'intestazione della scaletta con un titolo e un logo per il cliente/evento (non cambia il nome vero).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Eliminare un evento</h3>
+          <p>Cancella per sempre fogli, cue, colonne, categorie, membri e inviti — <strong>non si può annullare</strong>. Per questo va scritto il nome esatto dell'evento prima che il bottone "Elimina per sempre" si attivi.</p>
+        </div>
+      </section>
+
+      <section class="guide-section" id="fogli">
+        <h2><span class="section-icon">📄</span> Fogli</h2>
+        <p class="lede">Un evento può contenere più fogli — tipicamente uno per giornata di prove/show.</p>
+        <div class="card">
+          <h3>Creare un foglio</h3>
+          <p>In Gestione, dentro l'evento selezionato: bottone <strong>+ nuovo foglio</strong>. Dagli subito un nome chiaro (es. "DAY 1", "Prove", "Show serale").</p>
+        </div>
+        <div class="card">
+          <h3>Rinominare un foglio</h3>
+          <p>Non si rinomina da Gestione: apri il foglio nella scaletta vera e clicca sul titolo in alto (es. "DAY 1") per modificarlo direttamente lì. Serve il ruolo Editor.</p>
+        </div>
+        <div class="card">
+          <h3>Eliminare un foglio</h3>
+          <p>Dalla lista fogli in Gestione, il piccolo × accanto al nome del foglio apre la stessa conferma "scrivi il nome esatto" usata per gli eventi — cancella cue, colonne e categorie di quel foglio, non si può annullare.</p>
+        </div>
+      </section>
+
+      <section class="guide-section" id="scaletta-base">
+        <h2><span class="section-icon">⏱️</span> Cue e tempi a cascata</h2>
+        <p class="lede">Il cuore di RegiaFlow: una tabella dove basta la durata di ogni passaggio per far tornare tutti gli orari.</p>
+        <div class="card">
+          <h3>Le colonne fisse</h3>
+          <ul>
+            <li><strong>CUE</strong> — il numero progressivo del passaggio.</li>
+            <li><strong>START TIME</strong> — calcolato da solo, mai da scrivere a mano: è la somma di "Inizio scaletta" più le durate di tutti i cue precedenti.</li>
+            <li><strong>DURATION</strong> — la durata di quel singolo cue, in ore/minuti/secondi: l'unico valore di tempo che si scrive davvero.</li>
+            <li><strong>TOTAL DURATION</strong> — il tempo trascorso cumulato fino a quel cue, calcolato anche questo da solo.</li>
+            <li><strong>SPEAKER</strong> — chi parla/agisce in quel momento.</li>
+            <li><strong>ACTION/TRANSITION</strong> — cosa succede, con la categoria del cue mostrata sopra il testo.</li>
+            <li><strong>NOTE</strong> — annotazioni condivise, visibili a tutti.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>"Inizio scaletta"</h3>
+          <p>In alto a sinistra: l'orario da cui parte tutto il calcolo a cascata. Cambiarlo sposta lo START TIME di ogni cue del foglio, non solo del primo.</p>
+        </div>
+        <div class="card">
+          <h3>Inserire, spostare, eliminare</h3>
+          <ul>
+            <li><strong>+</strong> sotto al numero cue — inserisce un nuovo cue subito dopo quello.</li>
+            <li><strong>▲ / ▼</strong> — sposta il cue su/giù: l'ordine è condiviso, cambia i tempi a cascata per tutti (Editor/Collaboratore).</li>
+            <li><strong>×</strong> (rosso) — elimina il cue, dopo conferma (solo Editor).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Colonne fisse: nascondere e riordinare</h3>
+          <p>Da "Filtri" puoi nascondere le colonne fisse che non ti servono (tranne CUE/START TIME/DURATION, sempre visibili) — è una scelta solo tua, non tocca cosa vedono gli altri. L'ordine delle colonne fisse invece è uguale per tutti (non riordinabile a piacere come le colonne di reparto).</p>
+        </div>
+      </section>
+
+      <section class="guide-section" id="categorie-colori">
+        <h2><span class="section-icon">🎨</span> Categorie e colori</h2>
+        <p class="lede">Per riconoscere a colpo d'occhio il tipo di ogni cue.</p>
+        <div class="card">
+          <h3>Cosa sono</h3>
+          <p>Ogni cue può avere una categoria (es. VIDEO, SHOW, JINGLE) scelta dal menu sopra il testo di ACTION/TRANSITION — colora l'intera riga con il colore di quella categoria, condiviso per tutti.</p>
+        </div>
+        <div class="card">
+          <h3>Crearle e modificarle</h3>
+          <p>Da "Filtri" → gestione categorie (solo Editor): aggiungi, rinomina, elimina categorie. Puoi anche nascondere temporaneamente le righe di una categoria dalla tua vista (solo per te, non le cancella).</p>
+        </div>
+        <div class="card">
+          <h3>Il tuo colore personale sulle categorie</h3>
+          <p>Se il colore ufficiale di una categoria non ti è comodo da leggere, puoi sovrascriverlo solo per la tua vista (colore di sfondo e/o del testo) senza cambiarlo per gli altri.</p>
+        </div>
+      </section>
+
+      <section class="guide-section" id="colonne-reparto">
+        <h2><span class="section-icon">🎛️</span> Colonne di reparto</h2>
+        <p class="lede">Audio, luci, ledwall, video... configurabili evento per evento, non uno schema fisso.</p>
+        <div class="card">
+          <p>Il "+" sull'intestazione di una colonna di reparto ne inserisce una nuova subito dopo. Ogni colonna ha le sue frecce ◀▶ per spostarla — <strong>ma è un riordino solo per la tua vista</strong>, ognuno può tenerle nell'ordine che preferisce senza disturbare gli altri. Il × (rosso) la elimina per tutti, dopo conferma (solo Editor).</p>
+        </div>
+      </section>
+
+      <section class="guide-section" id="live-cue">
+        <h2><span class="section-icon">🔴</span> "In onda" (live cue)</h2>
+        <p class="lede">Per sapere sempre a colpo d'occhio a che punto è lo show, senza doverlo chiedere a voce.</p>
+        <div class="card">
+          <h3>Come funziona</h3>
+          <p>La striscia sottile a sinistra del numero cue: cliccala sul cue che sta andando in onda in quel momento.</p>
+          <ul>
+            <li><span class="swatch red"></span><strong>Rosso pieno</strong> — il cue attualmente in onda.</li>
+            <li><span class="swatch green"></span><strong>Verde pieno</strong> — il prossimo cue in scaletta.</li>
+            <li><span class="swatch off"></span><strong>Spento</strong> — tutti gli altri, sempre con lo stesso colore neutro.</li>
+          </ul>
+          <p>Un secondo click sul cue rosso spegne tutto e resetta. Lo sposta chi ha ruolo Editor o Collaboratore — è condiviso, lo vedono tutti in tempo reale, esattamente come per uno stato PGM/PVW da regia video.</p>
+          <p>Non è calcolato automaticamente dai tempi: in uno show reale gli orari slittano sempre, quindi va spostato a mano da chi segue davvero l'andamento.</p>
+        </div>
+      </section>
+
+      <section class="guide-section" id="vista-personale">
+        <h2><span class="section-icon">🙈</span> Vista personale</h2>
+        <p class="lede">Ogni cosa in questa sezione è privata: cambia solo quello che vedi tu, mai il dato condiviso.</p>
+        <div class="card">
+          <h3>Filtri</h3>
+          <p>Nascondi le colonne di reparto o le categorie che non ti riguardano — utile per non farti distrarre da informazioni di un altro reparto.</p>
+        </div>
+        <div class="card">
+          <h3>Note personali</h3>
+          <p>Una colonna "NOTE PERSONALI" tutta tua, sempre bloccata sulla destra (resta visibile anche scorrendo la tabella): promemoria che solo tu vedi.</p>
+        </div>
+        <div class="card">
+          <h3>Colori personali sulle caselle</h3>
+          <p>Su ogni casella condivisa (non solo le categorie) puoi marcare uno sfondo colorato tutto tuo, per evidenziare qualcosa che ti serve tenere d'occhio — un piccolo selettore colore compare passandoci sopra col mouse.</p>
+        </div>
+        <div class="card">
+          <h3>Dimensioni</h3>
+          <p>Dimensione del testo, larghezza delle colonne e altezza delle righe sono tutte regolabili trascinando i bordi — anche queste restano solo nella tua vista.</p>
+        </div>
+      </section>
+
+      <section class="guide-section" id="stampa">
+        <h2><span class="section-icon">🖨️</span> Stampa</h2>
+        <p class="lede">Da Gestione → seleziona un foglio → "Stampa".</p>
+        <div class="card">
+          <h3>Cosa stampare</h3>
+          <p>Scegli quali colonne fisse, colonne di reparto, categorie e se includere le tue note personali — di default è tutto selezionato, puoi restringere con "Deseleziona tutto" e poi rispuntare solo ciò che ti serve.</p>
+        </div>
+        <div class="card">
+          <h3>Due modi per ottenere il foglio</h3>
+          <ul>
+            <li><strong>Genera PDF</strong> — crea un PDF pronto da scaricare/stampare, colori di categoria inclusi. Funziona sempre, ovunque (web, Mac, Windows, anche dall'app desktop).</li>
+            <li><strong>Stampa (browser)</strong> — apre il dialogo di stampa nativo del sistema. Funziona da Windows e da Mac quando usi il browser, ma <strong>non è disponibile nell'app desktop Mac</strong> (limite della finestra dell'app su quella piattaforma) — in quel caso il bottone è disattivato e conviene usare "Genera PDF".</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="guide-section" id="sincronizzazione">
+        <h2><span class="section-icon">🔄</span> Sincronizzazione</h2>
+        <p class="lede">Tutti vedono le stesse modifiche in tempo reale, senza mai dover ricaricare la pagina.</p>
+        <div class="card">
+          <h3>L'indicatore in alto a destra</h3>
+          <ul>
+            <li>🟢 <strong>Live</strong> — connesso, ricevi ogni modifica in tempo reale.</li>
+            <li>🟡 <strong>...</strong> — in connessione, di solito per pochi secondi.</li>
+            <li>🔴 <strong>Disconnesso</strong> — nessuna connessione (es. rete caduta); l'app riprova da sola, ma se resta rosso a lungo prova il bottone "Sync".</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Bottone "Sync"</h3>
+          <p>Forza un ricaricamento completo dei dati e riconnette da zero — utile se qualcosa sembra bloccato. Anche un semplice click nel foglio, il cambio di finestra o tornare sull'app spesso sblocca la connessione da solo.</p>
+        </div>
+        <div class="card">
+          <h3>"Ultimo aggiornamento"</h3>
+          <p>Accanto all'indicatore vedi chi ha modificato l'ultimo cue e quando — utile per capire subito chi sta lavorando sulla scaletta.</p>
+        </div>
+      </section>
+
+      <section class="guide-section" id="membri-permessi">
+        <h2><span class="section-icon">👥</span> Membri e permessi</h2>
+        <p class="lede">Chi fa parte della squadra su un evento specifico.</p>
+        <div class="card">
+          <h3>Invitare qualcuno</h3>
+          <p>Bottone "Membri" nell'intestazione della scaletta (solo Editor): inserisci l'email e scegli il ruolo (Editor / Collaboratore / Sola lettura). Se la persona non ha ancora un account, viene creato automaticamente al primo accesso con quel ruolo già assegnato.</p>
+        </div>
+        <div class="card">
+          <h3>Cambiare ruolo o rimuovere</h3>
+          <p>Dallo stesso pannello Membri puoi cambiare il ruolo di chi è già dentro, o rimuoverlo dall'evento (conferma richiesta — perde l'accesso a quell'evento, non l'account).</p>
+        </div>
+      </section>
+
+      <section class="guide-section" id="gestione-pagina">
+        <h2><span class="section-icon">🗂️</span> Pagina Gestione</h2>
+        <p class="lede">Eventi, fogli, permessi e stampa vivono in una pagina separata dalla scaletta — niente distrazioni durante lo show.</p>
+        <div class="card">
+          <p>Ci arrivi dal link "Gestione ↗" nell'intestazione della scaletta, oppure direttamente da <a href="https://lucatiburzi.it/regiaflow-gestione/">lucatiburzi.it/regiaflow-gestione/</a>. Da lì: "I miei eventi" (creare/rinominare/eliminare eventi e fogli), "Stampa", e — solo per gli admin — "Amministrazione". Un link "Apri la scaletta ↗" riporta indietro.</p>
+        </div>
+      </section>
+
+      <section class="guide-section" id="amministrazione">
+        <h2><span class="section-icon">🛡️</span> Amministrazione <span class="pill admin">Solo admin</span></h2>
+        <p class="lede">Visione e controllo su tutta la piattaforma, non solo sui propri eventi.</p>
+        <div class="card">
+          <h3>Chi la vede</h3>
+          <p>Solo chi ha il ruolo di amministratore — per chiunque altro il pulsante "Amministrazione" non compare nemmeno.</p>
+        </div>
+        <div class="card">
+          <h3>Cosa puoi fare da lì</h3>
+          <ul>
+            <li>Vedere tutti gli utenti registrati, e concedere/togliere il permesso <strong>"Può creare eventi"</strong> — chi lo ha può crearsi eventi propri da zero, senza bisogno che qualcuno lo aggiunga prima come membro di un evento esistente.</li>
+            <li>Concedere o togliere il ruolo <strong>Admin</strong> ad altri utenti.</li>
+            <li>Vedere tutti gli eventi della piattaforma (non solo i propri) ed eliminarli, se necessario — con la stessa conferma "scrivi il nome esatto" usata ovunque per le cancellazioni.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>L'account amministratore principale è protetto</h3>
+          <p>Nessuno — nemmeno un altro admin — può togliere il ruolo admin all'account principale della piattaforma: il controllo non si perde mai per errore.</p>
+        </div>
+      </section>
+
+      <section class="guide-section" id="app-desktop-web">
+        <h2><span class="section-icon">💻</span> App desktop o browser?</h2>
+        <p class="lede">RegiaFlow gira in tre modi, con gli stessi dati.</p>
+        <div class="card">
+          <ul>
+            <li><strong>Browser</strong> — nessuna installazione, sempre aggiornato da solo appena c'è una modifica.</li>
+            <li><strong>App desktop Mac/Windows</strong> — si scarica da <a href="apri-regiaflow.html">questa pagina</a>. Quando esce una nuova versione, l'app te lo segnala da sola con un avviso in alto a sinistra.</li>
+          </ul>
+          <p>La pagina Gestione (eventi, stampa, amministrazione) è sempre caricata "fresca" dal sito anche quando la apri dall'app desktop — solo la scaletta vera e propria richiede di scaricare una nuova versione quando cambia qualcosa lì.</p>
+        </div>
+      </section>
+
+      <section class="guide-section" id="domande-frequenti">
+        <h2><span class="section-icon">💬</span> Domande frequenti</h2>
+        <p class="lede">I dubbi più comuni, in ordine sparso — usa la ricerca qui sopra se non trovi il tuo.</p>
+
+        <div class="card">
+          <p class="faq-q">Non vedo la modifica che ha appena fatto un collega</p>
+          <p>Controlla l'indicatore in alto a destra: se non è verde, premi "Sync" o clicca in un punto qualsiasi della scaletta per forzare la riconnessione.</p>
+        </div>
+        <div class="card">
+          <p class="faq-q">Ho scritto qualcosa e sembra sparito</p>
+          <p>Un campo si salva quando esci da lì (perde il focus) o premi Invio — se in quel momento un'altra persona aveva già scritto qualcosa nello stesso campo, vince l'ultima modifica salvata. Un bordo ambra sul campo avvisa quando qualcun altro ci sta già scrivendo, proprio per evitare questa sovrapposizione.</p>
+        </div>
+        <div class="card">
+          <p class="faq-q">Perché non riesco a modificare/eliminare qualcosa?</p>
+          <p>Probabilmente il tuo ruolo su quell'evento è "Sola lettura" o "Collaboratore" (che non può eliminare) — chiedi a chi ha ruolo Editor di cambiartelo dal pannello Membri.</p>
+        </div>
+        <div class="card">
+          <p class="faq-q">Il tasto Stampa non fa nulla</p>
+          <p>Se sei sull'app desktop Mac, "Stampa (browser)" è disattivato per un limite della finestra dell'app — usa "Genera PDF" al suo posto, funziona identico ovunque.</p>
+        </div>
+        <div class="card">
+          <p class="faq-q">Non trovo più un evento/foglio</p>
+          <p>Controlla di essere ancora membro di quell'evento (chiedi a chi lo gestisce) — se invece è stato eliminato davvero, l'azione non si può annullare: bisogna ricrearlo da zero.</p>
+        </div>
+        <div class="card">
+          <p class="faq-q">Come faccio a diventare "regista" e creare eventi miei?</p>
+          <p>Serve il permesso "Può creare eventi", che solo un amministratore può concederti dal pannello Amministrazione — o essere invitato direttamente come tale.</p>
+        </div>
+        <div class="card">
+          <p class="faq-q">L'app desktop mi dice che c'è una nuova versione</p>
+          <p>Vai su <a href="apri-regiaflow.html">questa pagina</a> e scarica la versione più recente per il tuo sistema — i tuoi dati restano tutti dove sono, sono salvati online, non sul computer.</p>
+        </div>
+        <div class="card">
+          <p class="faq-q">Non trovo la risposta che cercavo</p>
+          <p>Scrivi a <a href="mailto:luca@lucatiburzi.it">luca@lucatiburzi.it</a>.</p>
+        </div>
+      </section>
+
+      <div id="no-results">Nessun argomento trovato — prova con un'altra parola, oppure scrivi a <a href="mailto:luca@lucatiburzi.it">luca@lucatiburzi.it</a>.</div>
+    </main>
+  </div>
+
+  <footer>
+    © 2026 Luca Tiburzi — <a href="regiaflow.html">RegiaFlow</a>
+  </footer>
+
+  <script>
+    (function () {
+      const input = document.getElementById('search');
+      const clearBtn = document.getElementById('search-clear');
+      const status = document.getElementById('search-status');
+      const noResults = document.getElementById('no-results');
+      const sections = Array.from(document.querySelectorAll('.guide-section'));
+      const originalHtml = new Map(sections.map((s) => [s, s.innerHTML]));
+
+      function stripMarks(section) {
+        section.innerHTML = originalHtml.get(section);
+      }
+
+      function highlight(section, term) {
+        stripMarks(section);
+        if (!term) return;
+        const walker = document.createTreeWalker(section, NodeFilter.SHOW_TEXT, null);
+        const nodes = [];
+        let n;
+        while ((n = walker.nextNode())) nodes.push(n);
+        const re = new RegExp('(' + term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig');
+        nodes.forEach((node) => {
+          if (!re.test(node.nodeValue)) return;
+          re.lastIndex = 0;
+          const span = document.createElement('span');
+          span.innerHTML = node.nodeValue.replace(re, '<mark>$1</mark>');
+          node.parentNode.replaceChild(span, node);
+        });
+      }
+
+      function runSearch() {
+        const term = input.value.trim();
+        clearBtn.classList.toggle('visible', term.length > 0);
+        if (!term) {
+          sections.forEach((s) => { s.classList.remove('hidden-by-search'); stripMarks(s); });
+          status.textContent = '';
+          noResults.style.display = 'none';
+          return;
+        }
+        const termLower = term.toLowerCase();
+        let matches = 0;
+        sections.forEach((s) => {
+          const text = originalHtml.get(s).replace(/<[^>]+>/g, ' ').toLowerCase();
+          const isMatch = text.includes(termLower);
+          s.classList.toggle('hidden-by-search', !isMatch);
+          if (isMatch) { matches++; highlight(s, term); } else { stripMarks(s); }
+        });
+        status.textContent = matches === 0 ? '' : (matches === 1 ? '1 sezione trovata' : matches + ' sezioni trovate');
+        noResults.style.display = matches === 0 ? 'block' : 'none';
+      }
+
+      input.addEventListener('input', runSearch);
+      clearBtn.addEventListener('click', () => {
+        input.value = '';
+        runSearch();
+        input.focus();
+      });
+
+      // Se si arriva con un'ancora (es. da un link diretto a una sezione),
+      // assicurati che la ricerca sia vuota così la sezione è visibile.
+      if (location.hash) {
+        input.value = '';
+      }
+    })();
+  </script>
+
+</body>
+</html>
