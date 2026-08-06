@@ -111,6 +111,14 @@
       border-radius: 5px; padding: 1px 7px; font-size: 12px; color: #e5e7eb;
       font-family: ui-monospace, monospace;
     }
+    /* Testo semplice, non un link cliccabile: nella webview dell'app
+       desktop i link mailto: non aprono il client di posta (stesso limite
+       già visto per window.confirm()/stampa nativa) -- meglio un indirizzo
+       leggibile e selezionabile a mano che un click che non fa nulla. */
+    .contact-text {
+      font-family: ui-monospace, monospace;
+      user-select: all;
+    }
     .pill {
       display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
       letter-spacing: 0.04em; padding: 2px 8px; border-radius: 20px;
@@ -141,7 +149,7 @@
   <nav class="topbar">
     <a class="nav-logo" href="https://lucatiburzi.it/regiaflow/">← Torna alla scaletta</a>
     <div class="nav-links">
-      <a href="mailto:support@lucatiburzi.it">Contatti</a>
+      <span class="contact-text">support@lucatiburzi.it</span>
     </div>
   </nav>
 
@@ -466,11 +474,11 @@
         </div>
         <div class="card">
           <p class="faq-q">Non trovo la risposta che cercavo</p>
-          <p>Scrivi a <a href="mailto:support@lucatiburzi.it">support@lucatiburzi.it</a>.</p>
+          <p>Scrivi a <span class="contact-text">support@lucatiburzi.it</span>.</p>
         </div>
       </section>
 
-      <div id="no-results">Nessun argomento trovato — prova con un'altra parola, oppure scrivi a <a href="mailto:support@lucatiburzi.it">support@lucatiburzi.it</a>.</div>
+      <div id="no-results">Nessun argomento trovato — prova con un'altra parola, oppure scrivi a <span class="contact-text">support@lucatiburzi.it</span>.</div>
     </main>
   </div>
 
