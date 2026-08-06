@@ -479,6 +479,24 @@
   </footer>
 
   <script>
+    // Nella webview desktop di Tauri (app Mac/Windows) i link mailto: non
+    // aprono il client di posta -- stesso limite già visto per
+    // window.confirm()/stampa nativa, confermato da Luca testando l'app
+    // Mac. Lì (e SOLO lì) l'indirizzo diventa testo semplice selezionabile
+    // invece di un link che non fa nulla; sul web resta un link normale.
+    (function () {
+      if (!window.isTauri) return;
+      document.querySelectorAll('a[href^="mailto:"]').forEach((a) => {
+        const span = document.createElement('span');
+        // Il testo del link "Contatti" non è di per sé un indirizzo utile
+        // da copiare -- mostra sempre l'indirizzo vero, letto dall'href.
+        span.textContent = a.getAttribute('href').replace(/^mailto:/, '').split('?')[0];
+        span.style.fontFamily = 'ui-monospace, monospace';
+        span.style.userSelect = 'all';
+        a.replaceWith(span);
+      });
+    })();
+
     (function () {
       const input = document.getElementById('search');
       const clearBtn = document.getElementById('search-clear');
