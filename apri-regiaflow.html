@@ -39,16 +39,27 @@
     .note { color: #4b5563; font-size: 12px; margin-top: 28px; line-height: 1.6; }
     .back-link {
       display: none;
-      color: #888; font-size: 13px; text-decoration: none;
+      text-align: left;
       margin-bottom: 20px;
     }
-    .back-link:hover { color: #fff; }
+    .back-link a {
+      color: #888; font-size: 13px; text-decoration: none;
+    }
+    .back-link a:hover { color: #fff; }
+    .back-link .back-note {
+      display: block;
+      color: #4b5563; font-size: 11px; line-height: 1.5;
+      margin-top: 4px;
+    }
   </style>
 </head>
 <body>
 
   <div class="card">
-    <a class="back-link" id="back-to-app" href="https://lucatiburzi.it/regiaflow/">← Torna a RegiaFlow</a>
+    <div class="back-link" id="back-to-app">
+      <a href="https://lucatiburzi.it/regiaflow/">← Apri la versione web</a>
+      <span class="back-note">Hai scaricato un aggiornamento per l'app desktop? Questo link apre la versione <strong>web</strong> (sempre già aggiornata da sola, diversa dalla tua app) — non installa nulla. Per completare l'aggiornamento: apri il file appena scaricato e segui l'installazione, poi chiudi del tutto RegiaFlow e riaprilo.</span>
+    </div>
     <div class="app-icon">🎬</div>
     <h1>RegiaFlow</h1>
     <p class="sub">Scegli come vuoi aprirlo.</p>
@@ -98,13 +109,18 @@
       var link = document.getElementById('open-web');
       link.href = link.href + window.location.search;
     }
-    // Se si arriva qui dall'avviso "nuova versione disponibile" dentro
-    // l'app desktop (?from=app), mostra un modo per tornare indietro --
-    // nella webview di Tauri non c'è un "indietro" del browser, altrimenti
-    // si resta bloccati su questa pagina. Nascosto per chi arriva da
-    // altrove (es. email transazionali), dove non ha senso.
+    // Se si arriva qui dall'avviso "nuova versione disponibile" o dalla
+    // Guida dentro l'app desktop (?from=app), mostra un modo per tornare
+    // indietro -- nella webview di Tauri non c'è un "indietro" del
+    // browser, altrimenti si resta bloccati su questa pagina. Nascosto per
+    // chi arriva da altrove (es. email transazionali), dove non ha senso.
+    // Il link porta alla versione WEB, non aggiorna l'app desktop -- per
+    // chi arriva qui per scaricare un aggiornamento, senza una nota
+    // esplicita sembra che l'app si sia già aggiornata da sola cliccandolo
+    // (segnalato da Luca: apre la scaletta "già aggiornata" senza aver
+    // installato nulla), quindi il testo lo chiarisce sempre.
     if (/(?:^|[?&])from=app(?:&|$)/.test(window.location.search)) {
-      document.getElementById('back-to-app').style.display = 'inline-block';
+      document.getElementById('back-to-app').style.display = 'block';
     }
   </script>
 </body>
