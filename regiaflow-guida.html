@@ -159,6 +159,7 @@
       <div class="toc-group">
         <h4>La scaletta</h4>
         <a href="#scaletta-base">Cue e tempi a cascata</a>
+        <a href="#importa-excel">Importa da Excel</a>
         <a href="#categorie-colori">Categorie e colori</a>
         <a href="#colonne-reparto">Colonne di reparto</a>
         <a href="#live-cue">In onda (live cue)</a>
@@ -283,6 +284,36 @@
         <div class="card">
           <h3>Colonne fisse: nascondere e riordinare</h3>
           <p>Da "Filtri" puoi nascondere le colonne fisse che non ti servono (tranne CUE/START TIME/DURATION, sempre visibili) — è una scelta solo tua, non tocca cosa vedono gli altri. L'ordine delle colonne fisse invece è uguale per tutti (non riordinabile a piacere come le colonne di reparto).</p>
+        </div>
+      </section>
+
+      <section class="guide-section" id="importa-excel">
+        <h2><span class="section-icon">📋</span> Importa da Excel</h2>
+        <p class="lede">Porti dentro una scaletta già fatta in Excel, incollandola — nessun file da caricare.</p>
+        <div class="card">
+          <h3>Dove trovarlo</h3>
+          <p>Il bottone "📋 Importa da Excel" compare sopra la tabella solo quando il foglio è ancora vuoto (nessun cue) — è pensato per il punto di partenza di un evento, non per aggiungere righe a una scaletta già in corso.</p>
+        </div>
+        <div class="card">
+          <h3>Come funziona</h3>
+          <ol>
+            <li>In Excel, seleziona l'intervallo di celle (intestazioni comprese, se le hai) e copia con Cmd/Ctrl+C.</li>
+            <li>In RegiaFlow, incolla nel box di testo con Cmd/Ctrl+V.</li>
+            <li>Per ogni colonna Excel rilevata, scegli dove va a finire — Relatore, Descrizione/Azione, Note, Durata, Categoria, una colonna di reparto esistente o nuova, oppure "ignora". RegiaFlow prova a indovinare da sola in base al nome della colonna, sempre correggibile a mano.</li>
+            <li>Controlla l'anteprima delle prime righe, poi conferma.</li>
+          </ol>
+        </div>
+        <div class="card">
+          <h3>Durata</h3>
+          <p>Accetta i formati più comuni: <code>mm:ss</code>, <code>h:mm:ss</code>, <code>0.22.00</code> (con il punto, la stessa convenzione usata da RegiaFlow), o un numero singolo letto come minuti.</p>
+        </div>
+        <div class="card">
+          <h3>Categorie e colonne di reparto</h3>
+          <p>Se mappi una colonna su "Categoria", le etichette non ancora presenti nel foglio vengono create in automatico con un colore assegnato — puoi cambiarle dopo, come qualunque altra categoria. Lo stesso per le colonne di reparto marcate "nuova": vengono create una sola volta e riusate per tutte le righe.</p>
+        </div>
+        <div class="card">
+          <h3>Cosa non serve mappare</h3>
+          <p>CUE, START TIME, TOTAL DURATION (e simili totali cumulativi) sono calcolati da soli da RegiaFlow — lasciali su "Ignora questa colonna", non c'è nulla da importare lì.</p>
         </div>
       </section>
 
