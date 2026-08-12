@@ -72,6 +72,20 @@
       padding: 2px 6px; border-radius: 4px; font-size: 13px;
     }
 
+    .section-title { color: #fff; font-size: 22px; font-weight: 700; margin: 56px 0 20px; }
+    .features-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px; margin-bottom: 48px;
+    }
+    .feature {
+      background: #111827; border: 1px solid #1f2937;
+      border-radius: 16px; padding: 22px;
+    }
+    .feature.highlight { border-color: rgba(255,159,10,0.3); background: #291f10; }
+    .feature-icon { font-size: 28px; margin-bottom: 12px; }
+    .feature h3 { color: #fff; font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .feature p { color: #9ca3af; font-size: 13px; line-height: 1.6; }
+
     footer {
       text-align: center; padding: 32px; color: #374151;
       font-size: 13px; border-top: 1px solid #1c1c2e;
@@ -89,20 +103,20 @@
   <div class="hero">
     <div class="app-icon">⏱</div>
     <h1>LT Countdown</h1>
-    <p class="version">Versione 0.5.14</p>
+    <p class="version">Versione 0.6.1</p>
     <p class="sub">Timer e countdown professionali per presentazioni ed eventi live.</p>
   </div>
 
   <div class="container">
 
     <div class="download-grid">
-      <a class="download-card" href="https://github.com/4q9qpmz25f-prog/lt-countdown-releases/releases/download/mac-0.5.14/LT-Countdown-0.5.14-universal.dmg">
+      <a class="download-card" href="https://github.com/4q9qpmz25f-prog/lt-countdown-releases/releases/download/mac-0.6.1/LT-Countdown-0.6.1-universal.dmg">
         <div class="platform-icon"></div>
         <div class="platform-name">macOS</div>
         <div class="platform-detail">Universal · Intel + Apple Silicon</div>
         <span class="download-btn">↓ Scarica DMG</span>
       </a>
-      <a class="download-card" href="https://github.com/4q9qpmz25f-prog/lt-countdown-releases/releases/download/win-0.5.14/LT-Countdown.0.5.14.exe">
+      <a class="download-card" href="https://github.com/4q9qpmz25f-prog/lt-countdown-releases/releases/download/win-0.6.1/LT-Countdown.0.6.1.exe">
         <div class="platform-icon">🪟</div>
         <div class="platform-name">Windows</div>
         <div class="platform-detail">Windows 10 / 11 · 64-bit</div>
@@ -121,6 +135,70 @@
         <span class="download-btn">↓ Scarica TGZ</span>
       </a>
       <p style="color:#4b5563; font-size:13px; margin-top:12px; line-height:1.6;">⚠️ Per installare: apri Bitfocus Companion → <strong style="color:#6b7280;">Import module package</strong> (non "Import offline module bundle", è un'altra cosa).</p>
+    </div>
+
+    <div class="section-title">Caratteristiche</div>
+    <div class="features-grid">
+      <div class="feature highlight">
+        <div class="feature-icon">🕐</div>
+        <h3>Partenza programmata</h3>
+        <p>Imposta un orario su una cue: quando l'orologio lo raggiunge parte da sola, senza toccare una cue già in corso.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📋</div>
+        <h3>Cue list completa</h3>
+        <p>Titolo, durata, note, velocità di avanzamento per-cue — import da CSV/TSV o creazione manuale, riordino via drag & drop.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">⏱️</div>
+        <h3>Countdown, countup, orologio</h3>
+        <p>Ogni cue può contare alla rovescia, in avanti, mostrare solo l'ora, oppure restare "vuota" (es. una pausa) — con soglie di colore configurabili per avviso e overtime.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🖥️</div>
+        <h3>Display a schermo intero</h3>
+        <p>Accendi/spegni l'uscita per il pubblico su qualunque schermo con un tasto, senza nascondere Dock o barra dei menu sul Mac.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">👁️</div>
+        <h3>Preview sempre a vista</h3>
+        <p>Mirror del Display sempre in primo piano, anche sopra le altre app, mentre lavori su tutto il resto.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">⚫</div>
+        <h3>Black con un tasto</h3>
+        <p>Oscura insieme Display, Preview, Web locale e Remoto — utile nei cambi di scena.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">💬</div>
+        <h3>Messaggio al relatore in diretta</h3>
+        <p>Scrivi e invia un messaggio che compare sul Display — se è già in onda, si aggiorna in tempo reale a ogni tasto premuto.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🎨</div>
+        <h3>Layout personalizzabile</h3>
+        <p>Colori, posizioni e dimensioni indipendenti per ogni uscita (Display, Preview, Web locale, Remoto) — nessuno schema fisso.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🎛️</div>
+        <h3>Stream Deck / Bitfocus Companion</h3>
+        <p>Modulo dedicato con pulsanti già pronti (preset) e feedback colorati in base allo stato, oppure OSC generico.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🎬</div>
+        <h3>Collegamento RegiaFlow</h3>
+        <p>Quando una cue collegata va "in onda" su RegiaFlow, il timer parte da solo qui — nessuna configurazione dal lato della scaletta.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🌐</div>
+        <h3>Condivisione remota e Web locale</h3>
+        <p>Countdown visibile da internet per pubblico non sulla stessa rete, o dalla rete locale via browser su un altro dispositivo.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🔑</div>
+        <h3>Licenza libera</h3>
+        <p>Una macchina alla volta, ma spostabile in autonomia quando vuoi — nessuna richiesta da mandare.</p>
+      </div>
     </div>
 
     <div class="note">
