@@ -162,6 +162,7 @@
         <a href="#categorie-colori">Categorie e colori</a>
         <a href="#colonne-reparto">Colonne di reparto</a>
         <a href="#live-cue">In onda (live cue)</a>
+        <a href="#integrazione-lt-countdown">Integrazione LT-Countdown</a>
         <a href="#vista-personale">Vista personale</a>
       </div>
       <div class="toc-group">
@@ -329,6 +330,34 @@
           <h3>Preview manuale — per comunicare un salto</h3>
           <p>Il verde normalmente segue da solo il cue subito dopo quello in onda. Ma se c'è un salto di scaletta (si passa a un cue non adiacente), puoi <strong>fissare a mano</strong> quale cue mostrare in preview: un piccolo cerchio nell'angolo in basso a destra della stessa striscia, sotto il marker grande — cliccalo sul cue verso cui state per saltare e diventa verde subito, comunicando il cambio a tutta la squadra prima ancora del cambio vero e proprio.</p>
           <p>Un secondo click sulla puntina toglie la scelta manuale e si torna a seguire il "prossimo in scaletta" in automatico. Ogni volta che il cue in onda cambia (un vero cut), la scelta manuale si resetta da sola: si riparte sempre dal calcolo automatico finché qualcuno non fissa di nuovo il prossimo salto.</p>
+        </div>
+      </section>
+
+      <section class="guide-section" id="integrazione-lt-countdown">
+        <h2><span class="section-icon">⏱️</span> Integrazione con LT-Countdown</h2>
+        <p class="lede">Quando un cue va "in onda", può far partire in automatico il timer del relatore collegato.</p>
+        <div class="card">
+          <h3>Dove trovarla</h3>
+          <p>
+            Pulsante <strong>"Integrazione ▾"</strong> in testata, accanto a Guida — visibile a chiunque veda questo
+            foglio, anche con ruolo Sola lettura. Non c'è niente da configurare qui: ogni foglio ha già un suo codice,
+            generato da solo.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Come collegarla</h3>
+          <p>
+            Apri il pannello e copia il codice mostrato. In LT-Countdown, sezione "Collegamento RegiaFlow"
+            (Impostazioni), incollalo e attiva l'automazione — quella scelta resta lì, non su RegiaFlow: chi gestisce
+            il countdown decide in autonomia quando accenderla o spegnerla, anche senza nessun ruolo di scrittura su
+            questa scaletta.
+          </p>
+          <p>
+            Per far partire un timer specifico quando un certo cue va in onda, in LT-Countdown scrivi nel campo "ID"
+            di quel cue il numero corrispondente mostrato nella tabella del pannello "Integrazione" qui — è un numero
+            <strong>permanente</strong>, assegnato una volta sola quando crei il cue: resta lo stesso anche se poi
+            sposti, riordini o elimini altri cue nella scaletta.
+          </p>
         </div>
       </section>
 
