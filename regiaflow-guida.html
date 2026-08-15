@@ -165,11 +165,13 @@
         <a href="#live-cue">In onda (live cue)</a>
         <a href="#integrazione-lt-countdown">Integrazione LT-Countdown</a>
         <a href="#vista-personale">Vista personale</a>
+        <a href="#ricerca">Ricerca nella scaletta</a>
       </div>
       <div class="toc-group">
         <h4>Durante lo show</h4>
         <a href="#stampa">Stampa</a>
         <a href="#sincronizzazione">Sincronizzazione</a>
+        <a href="#messaggi-diretti">Messaggi diretti</a>
       </div>
       <div class="toc-group">
         <h4>Squadra e accessi</h4>
@@ -329,8 +331,8 @@
           <p>Da "Filtri" → gestione categorie (solo Editor): aggiungi, rinomina, elimina categorie. Puoi anche nascondere temporaneamente le righe di una categoria dalla tua vista (solo per te, non le cancella).</p>
         </div>
         <div class="card">
-          <h3>Il tuo colore personale sulle categorie</h3>
-          <p>Se il colore ufficiale di una categoria non ti è comodo da leggere, puoi sovrascriverlo solo per la tua vista (colore di sfondo e/o del testo) senza cambiarlo per gli altri.</p>
+          <h3>Sfondo, testo e bordo — uguali per tutti</h3>
+          <p>I tre colori di ogni categoria (dallo stesso pannello "Filtri", solo Editor) sono condivisi: li decide solo chi ha ruolo Editor, e valgono identici per chiunque guardi la scaletta — anche il colore delle righe senza categoria. Non è più possibile personalizzarli solo per la propria vista: la scaletta deve avere lo stesso aspetto per tutta la squadra, così un riferimento come "il blocco rosso" detto in cuffia vale per chiunque guardi.</p>
         </div>
       </section>
 
@@ -405,7 +407,7 @@
         </div>
         <div class="card">
           <h3>Colori personali sulle caselle</h3>
-          <p>Su ogni casella condivisa (non solo le categorie) puoi marcare uno sfondo colorato tutto tuo, per evidenziare qualcosa che ti serve tenere d'occhio — un piccolo selettore colore compare passandoci sopra col mouse.</p>
+          <p>Su ogni casella condivisa (relatore, azione, note, colonne di reparto) puoi marcare uno sfondo colorato tutto tuo, per evidenziare qualcosa che ti serve tenere d'occhio — un piccolo selettore colore compare passandoci sopra col mouse. I colori delle categorie invece sono condivisi e li decide solo l'Editor, vedi "Categorie e colori".</p>
         </div>
         <div class="card">
           <h3>Ridimensionare testo, colonne e righe</h3>
@@ -415,6 +417,15 @@
             <li><strong>Larghezza di una colonna</strong> — avvicina il mouse al bordo destro dell'intestazione della colonna: compare una piccola maniglia, trascinala per allargare o stringere. Per NOTE PERSONALI (l'ultima a destra) la maniglia è invece sul bordo sinistro, così puoi sempre allargarla verso le altre colonne senza uscire dallo schermo — e su un monitor largo si allarga già da sola per riempire lo spazio libero, finché non la ridimensioni tu a mano.</li>
             <li><strong>Altezza di una riga</strong> — stesso principio sul bordo in basso della cella del numero cue: trascina per rendere quella riga più alta o più bassa (utile quando un testo è lungo).</li>
           </ul>
+        </div>
+      </section>
+
+      <section class="guide-section" id="ricerca">
+        <h2><span class="section-icon">🔎</span> Ricerca nella scaletta</h2>
+        <p class="lede">Per trovare al volo un nome, una parola o un riferimento senza scorrere tutta la scaletta a occhio.</p>
+        <div class="card">
+          <p>La casella di ricerca è in alto a destra, sotto agli avatar di chi è collegato. Cerca su TUTTI i campi di testo di ogni cue — relatore, azione, note condivise, note personali, tutte le colonne di reparto — non solo su uno.</p>
+          <p>Le corrispondenze si <strong>evidenziano</strong> (bordo giallo), quella corrente più in evidenza (bordo arancione) con scorrimento automatico fino alla riga: la scaletta non viene mai filtrata/nascosta, così la vista d'insieme dei tempi a cascata resta sempre intera. I bottoni <span class="kbd">‹</span> / <span class="kbd">›</span> (o <span class="kbd">Invio</span> / <span class="kbd">Shift+Invio</span> dalla casella) saltano al risultato precedente/successivo. La "×" dentro la casella cancella la ricerca in un click.</p>
         </div>
       </section>
 
@@ -455,7 +466,24 @@
         </div>
         <div class="card">
           <h3>Chi è collegato ora</h3>
-          <p>Sotto "Connesso come" trovi un pallino colorato con le iniziali per ognuno che ha questo foglio aperto in questo momento — non solo chi sta scrivendo, anche chi guarda soltanto. Passa il mouse su un'iniziale per vedere il nome completo.</p>
+          <p>Sotto "Connesso come" trovi un pallino colorato con le iniziali per ognuno che ha questo foglio aperto in questo momento — non solo chi sta scrivendo, anche chi guarda soltanto. Passa il mouse su un'iniziale per vedere il nome completo, oppure cliccaci sopra per mandargli un messaggio diretto (vedi sotto).</p>
+        </div>
+      </section>
+
+      <section class="guide-section" id="messaggi-diretti">
+        <h2><span class="section-icon">✉️</span> Messaggi diretti</h2>
+        <p class="lede">Per comunicare al volo con un collega senza uscire da RegiaFlow o passare da un'altra app.</p>
+        <div class="card">
+          <h3>Mandare un messaggio</h3>
+          <p>Clicca sull'avatar di un utente collegato (nell'intestazione, in alto a destra) — si apre un piccolo box dove scrivere il testo e inviarlo.</p>
+        </div>
+        <div class="card">
+          <h3>Ricevere un messaggio</h3>
+          <p>Quando arriva un messaggio per te compare un popup in basso a destra, che sparisce da solo dopo qualche secondo. Sull'app desktop arriva anche una notifica di sistema se in quel momento non hai la finestra in primo piano.</p>
+        </div>
+        <div class="card">
+          <h3>Storico e cancellazione</h3>
+          <p>L'icona a busta (a sinistra degli avatar, con un numero se hai messaggi non letti) apre lo storico completo — mandati e ricevuti, restano visibili anche a chi si ricollega più tardi. Il bottone "Svuota" cancella tutta la lista: attenzione, un messaggio è condiviso tra le due persone, quindi sparisce anche per l'altra, non solo dalla tua vista.</p>
         </div>
       </section>
 
