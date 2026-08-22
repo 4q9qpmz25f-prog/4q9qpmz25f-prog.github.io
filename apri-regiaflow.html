@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Apri RegiaFlow</title>
+  <title>Installa RegiaFlow</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -15,10 +15,7 @@
     .card { max-width: 420px; width: 100%; text-align: center; }
     .app-icon {
       width: 88px; height: 88px;
-      background: linear-gradient(135deg, #ff375f, #7c3aed);
       border-radius: 20px; margin: 0 auto 24px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 44px;
       box-shadow: 0 12px 36px rgba(255,55,95,0.3);
     }
     h1 { font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
@@ -36,66 +33,53 @@
     .choice-text { text-align: left; flex: 1; }
     .choice-name { color: #fff; font-size: 15px; font-weight: 700; }
     .choice-detail { color: #6b7280; font-size: 12px; margin-top: 2px; }
-    .note { color: #4b5563; font-size: 12px; margin-top: 28px; line-height: 1.6; }
-    .back-link {
-      display: none;
-      text-align: left;
-      margin-bottom: 20px;
+    .install-section {
+      margin-top: 32px; text-align: left;
+      background: #111827; border: 1px solid #1f2937;
+      border-radius: 14px; padding: 20px 22px;
     }
-    .back-link a {
-      color: #888; font-size: 13px; text-decoration: none;
-    }
-    .back-link a:hover { color: #fff; }
-    .back-link .back-note {
-      display: block;
-      color: #4b5563; font-size: 11px; line-height: 1.5;
-      margin-top: 4px;
-    }
+    .install-section h2 { font-size: 14px; color: #fff; margin-bottom: 14px; }
+    .install-section .os { margin-bottom: 14px; }
+    .install-section .os:last-child { margin-bottom: 0; }
+    .install-section .os-name { font-size: 13px; font-weight: 700; color: #ff9f0a; margin-bottom: 3px; }
+    .install-section .os-steps { font-size: 13px; color: #9ca3af; line-height: 1.6; }
+    .note { color: #4b5563; font-size: 12px; margin-top: 24px; line-height: 1.6; }
   </style>
 </head>
 <body>
 
   <div class="card">
-    <div class="back-link" id="back-to-app">
-      <a href="https://lucatiburzi.it/regiaflow/">← Apri la versione web</a>
-      <span class="back-note">Hai scaricato un aggiornamento per l'app desktop? Questo link apre la versione <strong>web</strong> (sempre già aggiornata da sola, diversa dalla tua app) — non installa nulla. Per completare l'aggiornamento: apri il file appena scaricato e segui l'installazione, poi chiudi del tutto RegiaFlow e riaprilo.</span>
-    </div>
-    <div class="app-icon">🎬</div>
+    <img class="app-icon" src="/regiaflow/favicon.svg" alt="RegiaFlow" />
     <h1>RegiaFlow</h1>
-    <p class="sub">Scegli come vuoi aprirlo.</p>
+    <p class="sub">Funziona nel browser e si installa come un'app vera — icona nel Dock/taskbar, finestra propria, si aggiorna sempre da sola.</p>
 
     <div class="choices">
       <a class="choice" id="open-web" href="https://lucatiburzi.it/regiaflow/">
         <div class="choice-icon">🌐</div>
         <div class="choice-text">
-          <div class="choice-name">Apri nel browser</div>
+          <div class="choice-name">Apri RegiaFlow</div>
           <div class="choice-detail">Nessuna installazione — funziona subito</div>
-        </div>
-      </a>
-      <a class="choice" href="https://github.com/4q9qpmz25f-prog/regiaflow-releases/releases/download/v0.1.60/RegiaFlow_0.1.60_aarch64.dmg">
-        <div class="choice-icon">🍎</div>
-        <div class="choice-text">
-          <div class="choice-name">Scarica per Mac (Apple Silicon)</div>
-          <div class="choice-detail">M1/M2/M3/M4 · v0.1.60</div>
-        </div>
-      </a>
-      <a class="choice" href="https://github.com/4q9qpmz25f-prog/regiaflow-releases/releases/download/v0.1.60/RegiaFlow_0.1.60_x64.dmg">
-        <div class="choice-icon">🍎</div>
-        <div class="choice-text">
-          <div class="choice-name">Scarica per Mac (Intel)</div>
-          <div class="choice-detail">Processore Intel · v0.1.60</div>
-        </div>
-      </a>
-      <a class="choice" href="https://github.com/4q9qpmz25f-prog/regiaflow-releases/releases/download/v0.1.60/regiaflow.exe">
-        <div class="choice-icon">🪟</div>
-        <div class="choice-text">
-          <div class="choice-name">Scarica per Windows</div>
-          <div class="choice-detail">Windows 10 / 11 · 64-bit · v0.1.60</div>
         </div>
       </a>
     </div>
 
-    <p class="note">Mac: al primo avvio vai in Impostazioni → Privacy e sicurezza → "Apri comunque" se richiesto.<br/>Windows: se compare SmartScreen, scegli "Ulteriori informazioni" → "Esegui comunque".</p>
+    <div class="install-section">
+      <h2>Vuoi installarla come app?</h2>
+      <div class="os">
+        <div class="os-name">Mac (Safari)</div>
+        <div class="os-steps">Apri il link sopra → Condividi (il quadrato con la freccia) → "Aggiungi al Dock".</div>
+      </div>
+      <div class="os">
+        <div class="os-name">Windows/Mac (Chrome o Edge)</div>
+        <div class="os-steps">Apri il link sopra → cerca l'icona di installazione nella barra degli indirizzi (a destra) → "Installa".</div>
+      </div>
+      <div class="os">
+        <div class="os-name">iPhone/iPad (Safari)</div>
+        <div class="os-steps">Apri il link sopra → Condividi → "Aggiungi alla schermata Home".</div>
+      </div>
+    </div>
+
+    <p class="note">Non serve scaricare nessun file: l'installazione avviene direttamente dal browser, e RegiaFlow resta sempre aggiornato all'ultima versione da solo.</p>
   </div>
 
   <script>
@@ -108,19 +92,6 @@
     if (window.location.search) {
       var link = document.getElementById('open-web');
       link.href = link.href + window.location.search;
-    }
-    // Se si arriva qui dall'avviso "nuova versione disponibile" o dalla
-    // Guida dentro l'app desktop (?from=app), mostra un modo per tornare
-    // indietro -- nella webview di Tauri non c'è un "indietro" del
-    // browser, altrimenti si resta bloccati su questa pagina. Nascosto per
-    // chi arriva da altrove (es. email transazionali), dove non ha senso.
-    // Il link porta alla versione WEB, non aggiorna l'app desktop -- per
-    // chi arriva qui per scaricare un aggiornamento, senza una nota
-    // esplicita sembra che l'app si sia già aggiornata da sola cliccandolo
-    // (segnalato da Luca: apre la scaletta "già aggiornata" senza aver
-    // installato nulla), quindi il testo lo chiarisce sempre.
-    if (/(?:^|[?&])from=app(?:&|$)/.test(window.location.search)) {
-      document.getElementById('back-to-app').style.display = 'block';
     }
   </script>
 </body>

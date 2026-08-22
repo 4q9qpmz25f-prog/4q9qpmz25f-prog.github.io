@@ -444,8 +444,8 @@
         <div class="card">
           <h3>Due modi per ottenere il foglio</h3>
           <ul>
-            <li><strong>Genera PDF</strong> — crea un PDF pronto da scaricare/stampare, colori di categoria inclusi. Funziona sempre, ovunque (web, Mac, Windows, anche dall'app desktop).</li>
-            <li><strong>Stampa (browser)</strong> — apre il dialogo di stampa nativo del sistema. Funziona da Windows e da Mac quando usi il browser, ma <strong>non è disponibile nell'app desktop Mac</strong> (limite della finestra dell'app su quella piattaforma) — in quel caso il bottone è disattivato e conviene usare "Genera PDF".</li>
+            <li><strong>Genera PDF</strong> — crea un PDF pronto da scaricare/stampare, colori di categoria inclusi. Funziona sempre, ovunque.</li>
+            <li><strong>Stampa (browser)</strong> — apre il dialogo di stampa nativo del sistema. Funziona ovunque.</li>
           </ul>
         </div>
       </section>
@@ -484,7 +484,7 @@
         </div>
         <div class="card">
           <h3>Ricevere un messaggio</h3>
-          <p>Quando arriva un messaggio per te compare un popup in basso a destra, che sparisce da solo dopo qualche secondo. Sull'app desktop arriva anche una notifica di sistema se in quel momento non hai la finestra in primo piano.</p>
+          <p>Quando arriva un messaggio per te compare un popup in basso a destra, che sparisce da solo dopo qualche secondo, più un suono di avviso. Se in quel momento non hai la finestra in primo piano arriva anche una notifica di sistema.</p>
         </div>
         <div class="card">
           <h3>Storico e cancellazione</h3>
@@ -514,18 +514,17 @@
       </section>
 
       <section class="guide-section" id="app-desktop-web">
-        <h2><span class="section-icon">💻</span> App desktop o browser?</h2>
-        <p class="lede">RegiaFlow gira in tre modi, con gli stessi dati.</p>
+        <h2><span class="section-icon">💻</span> Browser o app installata?</h2>
+        <p class="lede">RegiaFlow gira in due modi, con gli stessi dati — e si aggiorna sempre da solo in entrambi.</p>
         <div class="card">
           <ul>
-            <li><strong>Browser</strong> — nessuna installazione, sempre aggiornato da solo appena c'è una modifica.</li>
-            <li><strong>App desktop Mac/Windows</strong> — si scarica da <a href="apri-regiaflow.html?from=app">questa pagina</a>. Quando esce una nuova versione, l'app te lo segnala da sola con un avviso in alto a sinistra.</li>
+            <li><strong>Browser</strong> — nessuna installazione, apri e basta.</li>
+            <li><strong>App installata</strong> — su Mac, Windows, telefono o tablet, si installa direttamente dal browser (vedi <a href="apri-regiaflow.html">questa pagina</a>): icona nel Dock/taskbar o schermata Home, finestra propria senza barra del browser. Nessun file da scaricare, nessun aggiornamento da installare a mano.</li>
           </ul>
-          <p>La pagina Gestione (eventi, fogli, stampa) è sempre caricata "fresca" dal sito anche quando la apri dall'app desktop — solo la scaletta vera e propria richiede di scaricare una nuova versione quando cambia qualcosa lì.</p>
         </div>
         <div class="card">
-          <h3>Ridimensionare la finestra dell'app</h3>
-          <p>Su Mac e Windows è una finestra come tutte le altre: si apre a schermo intero ma puoi ridimensionarla o affiancarla ad altre app trascinandone i bordi o l'angolo, esattamente come qualsiasi altro programma.</p>
+          <h3>Ridimensionare la finestra dell'app installata</h3>
+          <p>Su Mac e Windows è una finestra come tutte le altre: puoi ridimensionarla o affiancarla ad altre app trascinandone i bordi o l'angolo, esattamente come qualsiasi altro programma.</p>
         </div>
         <div class="card">
           <h3>Da telefono e tablet</h3>
@@ -551,20 +550,12 @@
           <p>Probabilmente il tuo ruolo su quell'evento è "Sola lettura" o "Collaboratore" (che non può eliminare) — chiedi a chi ha ruolo Editor di cambiartelo dal pannello Membri.</p>
         </div>
         <div class="card">
-          <p class="faq-q">Il tasto Stampa non fa nulla</p>
-          <p>Se sei sull'app desktop Mac, "Stampa (browser)" è disattivato per un limite della finestra dell'app — usa "Genera PDF" al suo posto, funziona identico ovunque.</p>
-        </div>
-        <div class="card">
           <p class="faq-q">Non trovo più un evento/foglio</p>
           <p>Controlla di essere ancora membro di quell'evento (chiedi a chi lo gestisce) — se invece è stato eliminato davvero, l'azione non si può annullare: bisogna ricrearlo da zero.</p>
         </div>
         <div class="card">
           <p class="faq-q">Come faccio a diventare "regista" e creare eventi miei?</p>
           <p>Serve il permesso "Può creare eventi" — chiedilo a chi gestisce l'app, oppure fatti invitare direttamente come "regista".</p>
-        </div>
-        <div class="card">
-          <p class="faq-q">L'app desktop mi dice che c'è una nuova versione</p>
-          <p>Vai su <a href="apri-regiaflow.html?from=app">questa pagina</a> e scarica la versione più recente per il tuo sistema — i tuoi dati restano tutti dove sono, sono salvati online, non sul computer.</p>
         </div>
         <div class="card">
           <p class="faq-q">Non trovo la risposta che cercavo</p>
@@ -581,24 +572,6 @@
   </footer>
 
   <script>
-    // Nella webview desktop di Tauri (app Mac/Windows) i link mailto: non
-    // aprono il client di posta -- stesso limite già visto per
-    // window.confirm()/stampa nativa, confermato da Luca testando l'app
-    // Mac. Lì (e SOLO lì) l'indirizzo diventa testo semplice selezionabile
-    // invece di un link che non fa nulla; sul web resta un link normale.
-    (function () {
-      if (!window.isTauri) return;
-      document.querySelectorAll('a[href^="mailto:"]').forEach((a) => {
-        const span = document.createElement('span');
-        // Il testo del link "Contatti" non è di per sé un indirizzo utile
-        // da copiare -- mostra sempre l'indirizzo vero, letto dall'href.
-        span.textContent = a.getAttribute('href').replace(/^mailto:/, '').split('?')[0];
-        span.style.fontFamily = 'ui-monospace, monospace';
-        span.style.userSelect = 'all';
-        a.replaceWith(span);
-      });
-    })();
-
     (function () {
       const input = document.getElementById('search');
       const clearBtn = document.getElementById('search-clear');
